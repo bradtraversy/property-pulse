@@ -20,6 +20,7 @@
     "react-geocode": "^1.0.0-alpha.1",
     "react-icons": "^5.0.1",
     "react-map-gl": "^7.1.7",
+    "react-share": "^5.1.0",
     "react-spinners": "^0.13.8",
     "react-toastify": "^10.0.4"
   },
