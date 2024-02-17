@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="icon" type="image/png" href="favicon.ico" />
+    <title>Property Pulse | Find local rental properties</title>
+  </head>
+  <body>
+    <nav class="bg-blue-700 border-b border-blue-500">
+      <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+        <div class="relative flex h-20 items-center justify-between">
+          <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+            <!-- Mobile menu button-->
+            <button
+              type="button"
+              id="mobile-dropdown-button"
+              class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+              aria-controls="mobile-menu"
+              aria-expanded="false"
+            >
+              <span class="absolute -inset-0.5"></span>
+              <span class="sr-only">Open main menu</span>
+              <svg
+                class="block h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                />
+              </svg>
+            </button>
+          </div>
+
+          <div
+            class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start"
+          >
+            <!-- Logo -->
+            <a class="flex flex-shrink-0 items-center" href="/index.html">
+              <img
+                class="h-10 w-auto"
+                src="/images/logo-white.png"
+                alt="PropertyPulse"
+              />
+
+              <span class="hidden sm:block text-white text-2xl font-bold ml-2"
+                >PropertyPulse</span
+              >
+            </a>
+            <!-- Desktop Menu Hidden below sm screens -->
+            <div class="hidden sm:ml-6 sm:block">
+              <div class="flex space-x-2">
+                <a
+                  href="/index.html"
+                  class="text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
+                  >Home</a
+                >
+                <a
+                  href="/properties.html"
+                  class="text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
+                  >Properties</a
+                >
+                <a
+                  href="/add-property.html"
+                  class="text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
+                  >Add Property</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Side Menu (Logged Out) -->
+          <div class="hidden sm:block sm:ml-6">
+            <div class="flex items-center">
+              <a
+                href="/login.html"
+                class="text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
+                >Login</a
+              >
+              <a
+                href="/register.html"
+                class="ml-2 text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
+                >Register</a
+              >
+            </div>
+          </div>
+
+          <!-- Right Side Menu (Logged In) -->
+          <div
+            class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0"
+          >
+            <a href="messages.html" class="relative group">
+              <button
+                type="button"
+                class="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+              >
+                <span class="absolute -inset-1.5"></span>
+                <span class="sr-only">View notifications</span>
+                <svg
+                  class="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"
+                  />
+                </svg>
+              </button>
+              <span
+                class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white transform translate-x-1/2 -translate-y-1/2 bg-red-600 rounded-full"
+              >
+                2
+                <!-- Replace with the actual number of notifications -->
+              </span>
+            </a>
+            <!-- Profile dropdown button -->
+            <div class="relative ml-3">
+              <div>
+                <button
+                  type="button"
+                  class="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                  id="user-menu-button"
+                  aria-expanded="false"
+                  aria-haspopup="true"
+                >
+                  <span class="absolute -inset-1.5"></span>
+                  <span class="sr-only">Open user menu</span>
+                  <img
+                    class="h-8 w-8 rounded-full"
+                    src="/images/profile.png"
+                    alt=""
+                  />
+                </button>
+              </div>
+
+              <!-- Profile dropdown -->
+              <div
+                id="user-menu"
+                class="hidden absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                role="menu"
+                aria-orientation="vertical"
+                aria-labelledby="user-menu-button"
+                tabindex="-1"
+              >
+                <a
+                  href="/profile.html"
+                  class="block px-4 py-2 text-sm text-gray-700"
+                  role="menuitem"
+                  tabindex="-1"
+                  id="user-menu-item-0"
+                  >Your Profile</a
+                >
+                <a
+                  href="saved-properties.html"
+                  class="block px-4 py-2 text-sm text-gray-700"
+                  role="menuitem"
+                  tabindex="-1"
+                  id="user-menu-item-2"
+                  >Saved Properties</a
+                >
+                <a
+                  href="#"
+                  class="block px-4 py-2 text-sm text-gray-700"
+                  role="menuitem"
+                  tabindex="-1"
+                  id="user-menu-item-2"
+                  >Sign Out</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile menu, show/hide based on menu state. -->
+      <div class="hidden" id="mobile-menu">
+        <div class="space-y-1 px-2 pb-3 pt-2">
+          <a
+            href="/index.html"
+            class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
+            >Home</a
+          >
+          <a
+            href="/properties.html"
+            class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+            >Properties</a
+          >
+          <a
+            href="/add-property.html"
+            class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+            >Add Property</a
+          >
+          <a
+            href="/login.html"
+            class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+            >Login</a
+          >
+          <a
+            href="/register.html"
+            class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+            >Register</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <section class="bg-blue-50 min-h-screen flex-grow">
+      <div class="container m-auto max-w-lg py-24">
+        <div
+          class="bg-white px-6 py-8 mb-4 shadow-md rounded-md border m-4 md:m-0"
+        >
+          <!-- Register Form-->
+          <form>
+            <h2 class="text-3xl text-center font-semibold mb-6">
+              Create An Account
+            </h2>
+           
+            <div class="mb-4">
+              <button
+                class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline flex items-center justify-center"
+                type="submit"
+              >
+                <i class="fab fa-google mr-2"></i> Register with Google
+              </button>
+            </div>
+
+            <div class="my-6 font-semibold text-center">
+              Or register with your email address
+            </div>
+            <!-- Name -->
+            <div class="mb-4">
+              <label class="block text-gray-700 font-bold mb-2">Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                class="border rounded w-full py-2 px-3 mb-2"
+                placeholder="Full name"
+                required
+              />
+            </div>
+
+            <!-- Email -->
+            <div class="mb-4">
+              <label class="block text-gray-700 font-bold mb-2">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="border rounded w-full py-2 px-3 mb-2"
+                placeholder="Email address"
+                required
+              />
+            </div>
+
+            <!-- Password -->
+            <div class="mb-4">
+              <label class="block text-gray-700 font-bold mb-2">Password</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                class="border rounded w-full py-2 px-3 mb-2"
+                placeholder="Password"
+                required
+              />
+            </div>
+
+            <!-- Password -->
+            <div class="mb-4">
+              <label class="block text-gray-700 font-bold mb-2"
+                >Confirm Password</label
+              >
+              <input
+                type="password"
+                id="password2"
+                name="password2"
+                class="border rounded w-full py-2 px-3 mb-2"
+                placeholder="Confirm Password"
+                required
+              />
+            </div>
+
+            <!-- Submit Button -->
+            <div>
+              <button
+                class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline"
+                type="submit"
+              >
+                Register
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="flex-grow"></div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-200 py-4 mt-auto">
+      <div
+        class="container mx-auto flex flex-col md:flex-row items-center justify-between px-4"
+      >
+        <div class="mb-4 md:mb-0">
+          <img src="/images/logo.png" alt="Logo" class="h-8 w-auto" />
+        </div>
+        <div
+          class="flex flex-wrap justify-center md:justify-start mb-4 md:mb-0"
+        >
+          <ul class="flex space-x-4">
+            <li><a href="/properties.html">Properties</a></li>
+            <li><a href="/terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-sm text-gray-500 mt-2 md:mt-0">
+            &copy; 2024 PropertyPulse. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
