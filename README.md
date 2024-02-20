@@ -2,7 +2,9 @@
 
 > A web application to help you find your next rental property.
 
-This is the main project from my **Next 14 From Scratch Course**
+This is the main project from my [Next 14 From Scratch Course](https://www.traversymedia.com/nextjs-from-scratch)
+
+The `_theme_files` folder contains the pure HTML files with Tailwind classes.
 
 <img src="/public/images/screen.jpg" />
 
