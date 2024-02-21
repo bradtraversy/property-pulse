@@ -39,7 +39,7 @@ const Navbar = () => {
               id='mobile-dropdown-button'
               className='relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white'
               aria-controls='mobile-menu'
-              aria-expanded='false'
+              aria-expanded={isMobileMenuOpen}
               onClick={() => setIsMobileMenuOpen((prev) => !prev)}
             >
               <span className='absolute -inset-0.5'></span>
@@ -156,7 +156,7 @@ const Navbar = () => {
                     type='button'
                     className='relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800'
                     id='user-menu-button'
-                    aria-expanded='false'
+                    aria-expanded={isProfileMenuOpen}
                     aria-haspopup='true'
                     onClick={() => setIsProfileMenuOpen((prev) => !prev)}
                   >
