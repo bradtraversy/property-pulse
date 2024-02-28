@@ -111,7 +111,7 @@ rotating their device) then the menu stays open and fills much of the screen.
 A simple solution would be to add an event listiener to the **Window** object
 for the **resize** event and close the menu.
 
-We can do this in our `useEffect` in [components/Navbar.jsx](https://github.com/bradtraversy/property-pulse/blob/main/components/Navbar.jsx)
+We can do this in our `useEffect` in [components/Navbar.jsx](./components/Navbar.jsx)
 
 ## Correction: a11y of menu open in Navbar.
 
