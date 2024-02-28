@@ -133,7 +133,11 @@ Changes can be seen in:
 - [components/PropertyAddForm.jsx](https://github.com/bradtraversy/property-pulse/blob/main/components/PropertyAddForm.jsx)
 - [models/Property.js](https://github.com/bradtraversy/property-pulse/blob/main/models/Property.js)
 
-While we are in our [PropertyAddForm.jsx](https://github.com/bradtraversy/property-pulse/blob/main/components/PropertyAddForm.jsx) we can also remove the check for the component being mounted before rendering the form as there is no real need for this.
+While we are in our [PropertyAddForm.jsx](https://github.com/bradtraversy/property-pulse/blob/main/components/PropertyAddForm.jsx) we can also remove the check for the component being mounted before rendering the form as there is no real need for this.  
+We can also remove all state and onChange handler functions as we are submitting
+the form with a form action to our API routes, so we don't really do anything
+with the local state.
+This greatly simplifies the code in the **PropertyAddForm**.
 
 ## License
 
