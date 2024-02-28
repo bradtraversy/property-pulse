@@ -116,8 +116,9 @@ We can do this in our `useEffect` in [components/Navbar.jsx](https://github.com/
 ## Correction: a11y of menu open in Navbar.
 
 Currently our `aria-expanded` attribute in our menu button is hard coded to
-**false**  
-However for good accessibility in our application, we should ideally set this
+**false** even when our menu is actually open, which doesn't give the correct
+status to those using accessibility tools like screen readers.  
+For good accessibility in our application, we should ideally set this
 value to state to correctly reflect if the menu is open or not.
 
 Changes can be seen in [components/Navbar.jsx](https://github.com/bradtraversy/property-pulse/blob/main/components/Navbar.jsx)
