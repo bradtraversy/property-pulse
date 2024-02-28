@@ -26,7 +26,15 @@ const Navbar = () => {
     };
 
     setAuthProviders();
+
+    // NOTE: close mobile menu if the viewport size is changed
+    window.addEventListener('resize', () => {
+      setIsMobileMenuOpen(false);
+    });
   }, []);
+
+  // NOTE: the aria-expanded attribute value should change with state for
+  // correct a11y
 
   return (
     <nav className='bg-blue-700 border-b border-blue-500'>
