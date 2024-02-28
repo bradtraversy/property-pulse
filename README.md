@@ -102,7 +102,7 @@ extension such as [This one for VSCode](https://marketplace.visualstudio.com/ite
 When a user deletes a property it should also delete the property images from
 Cloudinary.
 
-We can do this in our `DELETE` function in [app/api/properties/[id]/route.js](https://github.com/bradtraversy/property-pulse/blob/main/app/api/properties/%5Bid%5D/route.js)
+We can do this in our `DELETE` function in [app/api/properties/[id]/route.js](./app/api/properties/%5Bid%5D/route.js)
 
 ## BUG: Mobile menu stays open when viewport is resized.
 
@@ -121,7 +121,7 @@ status to those using accessibility tools like screen readers.
 For good accessibility in our application, we should ideally set this
 value to state to correctly reflect if the menu is open or not.
 
-Changes can be seen in [components/Navbar.jsx](https://github.com/bradtraversy/property-pulse/blob/main/components/Navbar.jsx)
+Changes can be seen in [components/Navbar.jsx](./components/Navbar.jsx)
 
 ## BUG: Our user can upload as many images as they want.
 
@@ -131,10 +131,10 @@ can in fact add as many images as they like.
 
 Changes can be seen in:
 
-- [components/PropertyAddForm.jsx](https://github.com/bradtraversy/property-pulse/blob/main/components/PropertyAddForm.jsx)
-- [models/Property.js](https://github.com/bradtraversy/property-pulse/blob/main/models/Property.js)
+- [components/PropertyAddForm.jsx](./components/PropertyAddForm.jsx)
+- [models/Property.js](./models/Property.js)
 
-While we are in our [PropertyAddForm.jsx](https://github.com/bradtraversy/property-pulse/blob/main/components/PropertyAddForm.jsx) we can also remove the check for the component being mounted before rendering the form as there is no real need for this.  
+While we are in our [PropertyAddForm.jsx](./components/PropertyAddForm.jsx) we can also remove the check for the component being mounted before rendering the form as there is no real need for this.  
 We can also remove all state and onChange handler functions as we are submitting
 the form with a form action to our API routes, so we don't really do anything
 with the local state.
