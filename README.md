@@ -139,6 +139,40 @@ the form with a form action to our API routes, so we don't really do anything
 with the local state.
 This greatly simplifies the code in the **PropertyAddForm**.
 
+## BUG: API routes not sending a JSON response.
+
+When we are making requests to our API routes we are expecting a **JSON**
+response and parsing the response as JSON. However our API routes are sending
+back a **text/plain** Response. This has led to issues for some students in
+fetching the relevant data from our API routes.
+
+If you log out the headers of the Response you will see it has a
+**'Content-Type': 'text/plain'** header, which is the default.  
+Since we are expecting **JSON** then really we should be sending a a
+**'Content-Type': 'application/json'** header with the Response.
+
+If you are seeing issues with parsing the response from making requests to the
+API routes then this is likely the fix you need.
+
+**Before with text/plain response:**
+
+```js
+return new Response(JSON.stringify(properties), {
+  status: 200,
+});
+```
+
+Instead we can use the [Response.json](https://developer.mozilla.org/en-US/docs/Web/API/Response/json_static) static method to send back a Response that includes a **Content-Type** header that is set to **application/json**:
+
+```js
+return Response.json(properties);
+```
+
+The default status code is set to **200** so we don't need to specify a status
+code for a good response.
+
+Changes can be seen in all our **app/api/\*\*/route.js** files.
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details

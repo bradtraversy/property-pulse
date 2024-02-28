@@ -35,7 +35,7 @@ export const PUT = async (request, { params }) => {
 
     await message.save();
 
-    return new Response(JSON.stringify(message), { status: 200 });
+    return Response.json(message);
   } catch (error) {
     console.log(error);
     return new Response('Something went wrong', { status: 500 });
