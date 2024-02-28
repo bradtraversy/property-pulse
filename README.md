@@ -85,6 +85,56 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+---
+
+# Bug Fixes, corrections and code FAQ
+
+The code here in the main branch has been updated since the course was published to fix bugs found by students of the course and answer common questions, if you are looking to compare your code to that from the course lessons then
+please refer to the [originalcoursecode](https://github.com/bradtraversy/property-pulse/tree/originalCourseCode) branch of this repository.
+
+There are detailed notes in the comments that will hopefully help you understand
+and adopt the changes and corrections.  
+An easy way of seeing all the changes and fixes is to use a note highlighter
+extension such as [This one for VSCode](https://marketplace.visualstudio.com/items?itemName=wayou.vscode-todo-highlight) or [this one for Vim](https://github.com/folke/todo-comments.nvim) Where by you can easily list all the **NOTE:** and **FIX:** tags in the comments.
+
+## BUG: Images are not deleted from Cloudinary
+
+When a user deletes a property it should also delete the property images from
+Cloudinary.
+
+We can do this in our `DELETE` function in [app/api/properties/[id]/route.js](https://github.com/bradtraversy/property-pulse/blob/main/app/api/properties/%5Bid%5D/route.js)
+
+## BUG: Mobile menu stays open when viewport is resized.
+
+If the mobile menu is open and the view port size changes (such as the user
+rotating their device) then the menu stays open and fills much of the screen.
+A simple solution would be to add an event listiener to the **Window** object
+for the **resize** event and close the menu.
+
+We can do this in our `useEffect` in [components/Navbar.jsx](https://github.com/bradtraversy/property-pulse/blob/main/components/Navbar.jsx)
+
+## Correction: a11y of menu open in Navbar.
+
+Currently our `aria-expanded` attribute in our menu button is hard coded to
+**false**  
+However for good accessibility in our application, we should ideally set this
+value to state to correctly reflect if the menu is open or not.
+
+Changes can be seen in [components/Navbar.jsx](https://github.com/bradtraversy/property-pulse/blob/main/components/Navbar.jsx)
+
+## BUG: Our user can upload as many images as they want.
+
+In our **PropertyAddForm** we state that a user can add up to 4 images, however
+we don't have any logic to validate a maximum of 4 images were added, so they
+can in fact add as many images as they like.
+
+Changes can be seen in:
+
+- [components/PropertyAddForm.jsx](https://github.com/bradtraversy/property-pulse/blob/main/components/PropertyAddForm.jsx)
+- [models/Property.js](https://github.com/bradtraversy/property-pulse/blob/main/models/Property.js)
+
+While we are in our [PropertyAddForm.jsx](https://github.com/bradtraversy/property-pulse/blob/main/components/PropertyAddForm.jsx) we can also remove the check for the component being mounted before rendering the form as there is no real need for this.
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
