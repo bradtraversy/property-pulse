@@ -4,6 +4,9 @@ import { getSessionUser } from '@/utils/getSessionUser';
 
 export const dynamic = 'force-dynamic';
 
+// NOTE: here we need to send back a Content-Type: application/json response
+// header rather than a text/plain header.
+
 export const POST = async (request) => {
   try {
     await connectDB();

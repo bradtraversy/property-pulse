@@ -1,6 +1,9 @@
 import connectDB from '@/config/database';
 import Property from '@/models/Property';
 
+// NOTE: here we need to send back a Content-Type: application/json response
+// header rather than a text/plain header.
+
 // GET /api/properties/user/:userId
 export const GET = async (request, { params }) => {
   try {

@@ -3,6 +3,9 @@ import Property from '@/models/Property';
 import { getSessionUser } from '@/utils/getSessionUser';
 import cloudinary from '@/config/cloudinary';
 
+// NOTE: here we need to send back a Content-Type: application/json response
+// header rather than a text/plain header.
+
 // GET /api/properties/:id
 export const GET = async (request, { params }) => {
   try {
@@ -12,9 +15,7 @@ export const GET = async (request, { params }) => {
 
     if (!property) return new Response('Property Not Found', { status: 404 });
 
-    return new Response(JSON.stringify(property), {
-      status: 200,
-    });
+    return Response.json(property);
   } catch (error) {
     console.log(error);
     return new Response('Something Went Wrong', { status: 500 });
