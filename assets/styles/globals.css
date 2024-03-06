@@ -1,3 +1,4 @@
+/* NOTE: here we need to import the Poppins font to be able to use it with our Tailwind config */
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 @tailwind base;
 @tailwind components;

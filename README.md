@@ -174,6 +174,23 @@ code for a good response.
 
 Changes can be seen in all our **app/api/\*\*/route.js** files.
 
+## BUG: Missing import of Poppins font
+
+In our [tailwind.config.js](tailwind.config.js) we have:
+
+```js
+extend: {
+  fontFamily: {
+    sans: ['Poppins', 'sans-serif'],
+  },
+```
+
+So using the **Poppins** as our **sans** Tailwind font.  
+However we also need to import/source that font if we want to use it in the
+project.
+
+Changes can be seen in [globals.css](assets/styles/globals.css)
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
