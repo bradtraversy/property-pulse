@@ -8,6 +8,27 @@ The `_theme_files` folder contains the pure HTML files with Tailwind classes.
 
 <img src="/public/images/screen.jpg" />
 
+# Contents
+
+<!--toc:start-->
+
+- [Property Pulse](#property-pulse)
+  - [Features](#features)
+  - [Getting Started](#getting-started)
+    - [Prerequisites](#prerequisites)
+    - [`.env` File](#env-file)
+    - [Install Dependencies](#install-dependencies)
+    - [Run the Development Server](#run-the-development-server)
+- [Bug Fixes, corrections and code FAQ](#bug-fixes-corrections-and-code-faq)
+  - [BUG: Images are not deleted from Cloudinary](#bug-images-are-not-deleted-from-cloudinary)
+  - [BUG: Mobile menu stays open when viewport is resized.](#bug-mobile-menu-stays-open-when-viewport-is-resized)
+  - [Correction: a11y of menu open in Navbar.](#correction-a11y-of-menu-open-in-navbar)
+  - [BUG: Our user can upload as many images as they want.](#bug-our-user-can-upload-as-many-images-as-they-want)
+  - [BUG: API routes not sending a JSON response.](#bug-api-routes-not-sending-a-json-response)
+  - [BUG: Missing import of Poppins font](#bug-missing-import-of-poppins-font)
+  - [License](#license)
+  <!--toc:end-->
+
 ## Features
 
 Here are some of the current features that Property Pulse has:
