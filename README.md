@@ -13,6 +13,7 @@ The `_theme_files` folder contains the pure HTML files with Tailwind classes.
 <!--toc:start-->
 
 - [Property Pulse](#property-pulse)
+- [Contents](#contents)
   - [Features](#features)
   - [Getting Started](#getting-started)
     - [Prerequisites](#prerequisites)
@@ -26,6 +27,7 @@ The `_theme_files` folder contains the pure HTML files with Tailwind classes.
   - [BUG: Our user can upload as many images as they want.](#bug-our-user-can-upload-as-many-images-as-they-want)
   - [BUG: API routes not sending a JSON response.](#bug-api-routes-not-sending-a-json-response)
   - [BUG: Missing import of Poppins font](#bug-missing-import-of-poppins-font)
+  - [Correction: Use Next Link component for application links](#correction-use-next-link-component-for-application-links)
   - [License](#license)
   <!--toc:end-->
 
@@ -211,6 +213,12 @@ However we also need to import/source that font if we want to use it in the
 project.
 
 Changes can be seen in [globals.css](assets/styles/globals.css)
+
+## Correction: Use Next Link component for application links
+
+in our [components/InfoBox.jsx]('components/InfoBox.jsx') we should be using a
+`<Link />` component instead of a `<a />` tag as here we are navigating the user
+within our application.
 
 ## License
 
