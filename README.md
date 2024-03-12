@@ -28,6 +28,7 @@ The `_theme_files` folder contains the pure HTML files with Tailwind classes.
   - [BUG: API routes not sending a JSON response.](#bug-api-routes-not-sending-a-json-response)
   - [BUG: Missing import of Poppins font](#bug-missing-import-of-poppins-font)
   - [Correction: Use Next Link component for application links](#correction-use-next-link-component-for-application-links)
+  - [Correction: Remove unused **loading** prop from LoadingPage](#correction-remove-unused-loading-prop-from-loadingpage)
   - [License](#license)
   <!--toc:end-->
 
@@ -219,6 +220,13 @@ Changes can be seen in [globals.css](assets/styles/globals.css)
 in our [components/InfoBox.jsx]('components/InfoBox.jsx') we should be using a
 `<Link />` component instead of a `<a />` tag as here we are navigating the user
 within our application.
+
+## Correction: Remove unused **loading** prop from LoadingPage
+
+In our [app/loading.jsx](app/loading.jsx) `LoadingPage` component we are
+currently receiving a prop of **loading**, however a loading file compoent
+doesn't actually receive an props - [source](https://nextjs.org/docs/app/api-reference/file-conventions/loading).  
+So we can remove the prop entirely.
 
 ## License
 

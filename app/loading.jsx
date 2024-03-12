@@ -6,11 +6,14 @@ const override = {
   margin: '100px auto',
 };
 
-const LoadingPage = ({ loading }) => {
+// NOTE: Here 'loading' will be undefined as a loading file doesn't recieve any
+// props:
+// https://nextjs.org/docs/app/api-reference/file-conventions/loading
+
+const LoadingPage = () => {
   return (
     <ClipLoader
       color='#3b82f6'
-      loading={loading}
       cssOverride={override}
       size={150}
       aria-label='Loading Spinner'
