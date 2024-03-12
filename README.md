@@ -29,6 +29,7 @@ The `_theme_files` folder contains the pure HTML files with Tailwind classes.
   - [BUG: Missing import of Poppins font](#bug-missing-import-of-poppins-font)
   - [Correction: Use Next Link component for application links](#correction-use-next-link-component-for-application-links)
   - [Correction: Remove unused **loading** prop from LoadingPage](#correction-remove-unused-loading-prop-from-loadingpage)
+  - [Correction: awaiting resolution of an array of strings](#correction-awaiting-resolution-of-an-array-of-strings)
   - [License](#license)
   <!--toc:end-->
 
