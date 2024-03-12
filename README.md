@@ -224,8 +224,8 @@ within our application.
 ## Correction: Remove unused **loading** prop from LoadingPage
 
 In our [app/loading.jsx](app/loading.jsx) `LoadingPage` component we are
-currently receiving a prop of **loading**, however a loading file compoent
-doesn't actually receive an props - [source](https://nextjs.org/docs/app/api-reference/file-conventions/loading).  
+currently receiving a prop of **loading**, however a loading file component
+doesn't actually receive any props - [source](https://nextjs.org/docs/app/api-reference/file-conventions/loading).  
 So we can remove the prop entirely.
 
 ## License
