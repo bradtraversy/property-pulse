@@ -46,6 +46,7 @@ export const POST = async (request) => {
 
     // Access all values from amenities and images
     const amenities = formData.getAll('amenities');
+
     const images = formData
       .getAll('images')
       .filter((image) => image.name !== '');
@@ -79,10 +80,14 @@ export const POST = async (request) => {
     };
 
     // Upload image(s) to Cloudinary
-    const imageUploadPromises = [];
+    // NOTE: this will be an array of strings, not a array of Promises
+    // So imageUploadPromises has been changed to imageUrls to more
+    // declaratively represent it's type.
 
-    for (const image of images) {
-      const imageBuffer = await image.arrayBuffer();
+    const imageUrls = [];
+
+    for (const imageFile of images) {
+      const imageBuffer = await imageFile.arrayBuffer();
       const imageArray = Array.from(new Uint8Array(imageBuffer));
       const imageData = Buffer.from(imageArray);
 
@@ -97,13 +102,14 @@ export const POST = async (request) => {
         }
       );
 
-      imageUploadPromises.push(result.secure_url);
-
-      // Wait for all images to upload
-      const uploadedImages = await Promise.all(imageUploadPromises);
-      // Add uploaded images to the propertyData object
-      propertyData.images = uploadedImages;
+      imageUrls.push(result.secure_url);
     }
+
+    // NOTE: here there is no need to await the resolution of
+    // imageUploadPromises as it's not a array of Promises it's an array of
+    // strings, additionally we should not await on every iteration of our loop.
+
+    propertyData.images = imageUrls;
 
     const newProperty = new Property(propertyData);
     await newProperty.save();
@@ -111,10 +117,6 @@ export const POST = async (request) => {
     return Response.redirect(
       `${process.env.NEXTAUTH_URL}/properties/${newProperty._id}`
     );
-
-    // return new Response(JSON.stringify({ message: 'Success' }), {
-    //   status: 200,
-    // });
   } catch (error) {
     return new Response('Failed to add property', { status: 500 });
   }

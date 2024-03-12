@@ -228,6 +228,17 @@ currently receiving a prop of **loading**, however a loading file component
 doesn't actually receive any props - [source](https://nextjs.org/docs/app/api-reference/file-conventions/loading).  
 So we can remove the prop entirely.
 
+## Correction: awaiting resolution of an array of strings
+
+Currently in our [app/api/properties/route.js](app/api/properties/route.js)
+`POST` function for uploading images to Cloudinary, we are awaiting the
+resolution of `imageUploadPromises` using `Promise.all`  
+However `imageUploadPromises` is an Array of Strings - `string[]` not an array
+of Promises. Additionally we are awaiting this on every iteration of our for
+loop.  
+So the code here has changed and `imageUploadPromises` has be renamed to
+`imageUrls` to more declaratively represent what Type the Array is.
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
