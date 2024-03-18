@@ -24,7 +24,10 @@ The `_theme_files` folder contains the pure HTML files with Tailwind classes.
   - [BUG: Images are not deleted from Cloudinary](#bug-images-are-not-deleted-from-cloudinary)
   - [BUG: Mobile menu stays open when viewport is resized.](#bug-mobile-menu-stays-open-when-viewport-is-resized)
   - [Correction: a11y of menu open in Navbar.](#correction-a11y-of-menu-open-in-navbar)
-  - [BUG: Our user can upload as many images as they want.](#bug-our-user-can-upload-as-many-images-as-they-want)
+  - [Corrections to PropertyAddForm](#corrections-to-propertyaddform)
+    - [Our user can upload as many images as they want.](#our-user-can-upload-as-many-images-as-they-want)
+    - [No need to check for component being mounted](#no-need-to-check-for-component-being-mounted)
+    - [Unused state in PropertyAddForm](#unused-state-in-propertyaddform)
   - [BUG: API routes not sending a JSON response.](#bug-api-routes-not-sending-a-json-response)
   - [BUG: Missing import of Poppins font](#bug-missing-import-of-poppins-font)
   - [Correction: Use Next Link component for application links](#correction-use-next-link-component-for-application-links)
@@ -148,7 +151,9 @@ value to state to correctly reflect if the menu is open or not.
 
 Changes can be seen in [components/Navbar.jsx](./components/Navbar.jsx)
 
-## BUG: Our user can upload as many images as they want.
+## Corrections to PropertyAddForm
+
+### Our user can upload as many images as they want.
 
 In our **PropertyAddForm** we state that a user can add up to 4 images, however
 we don't have any logic to validate a maximum of 4 images were added, so they
@@ -159,10 +164,17 @@ Changes can be seen in:
 - [components/PropertyAddForm.jsx](./components/PropertyAddForm.jsx)
 - [models/Property.js](./models/Property.js)
 
-While we are in our [PropertyAddForm.jsx](./components/PropertyAddForm.jsx) we can also remove the check for the component being mounted before rendering the form as there is no real need for this.  
-We can also remove all state and onChange handler functions as we are submitting
-the form with a form action to our API routes, so we don't really do anything
-with the local state.
+### No need to check for component being mounted
+
+While we are in our [PropertyAddForm.jsx](./components/PropertyAddForm.jsx) we can also
+remove the check for the component being mounted before rendering the form as there is no real need for this.
+
+### Unused state in PropertyAddForm
+
+In our [PropertyAddForm.jsx](./components/PropertyAddForm.jsx) are using state
+to manage our input values when they change but we never actually do anything with the sate as we
+are submitting the form using a form action to our API routes.  
+So we can completely remove the complexity of managing state here.  
 This greatly simplifies the code in the **PropertyAddForm**.
 
 ## BUG: API routes not sending a JSON response.
