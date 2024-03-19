@@ -172,7 +172,7 @@ remove the check for the component being mounted before rendering the form as th
 ### Unused state in PropertyAddForm
 
 In our [PropertyAddForm.jsx](./components/PropertyAddForm.jsx) we are using state
-to manage our input values when they change but we never actually do anything with the sate as we
+to manage our input values when they change but we never actually do anything with the state as we
 are submitting the form using a form action to our API routes.  
 So we can completely remove the complexity of managing state here.  
 This greatly simplifies the code in the **PropertyAddForm**.
