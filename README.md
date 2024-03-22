@@ -33,6 +33,7 @@ The `_theme_files` folder contains the pure HTML files with Tailwind classes.
   - [Correction: Use Next Link component for application links](#correction-use-next-link-component-for-application-links)
   - [Correction: Remove unused **loading** prop from LoadingPage](#correction-remove-unused-loading-prop-from-loadingpage)
   - [Correction: awaiting resolution of an array of strings](#correction-awaiting-resolution-of-an-array-of-strings)
+  - [Correction: unused state in PropertyMap.jsx](#correction-unused-state-in-propertymapjsx)
   - [License](#license)
   <!--toc:end-->
 
@@ -251,6 +252,11 @@ of Promises. Additionally we are awaiting this on every iteration of our for
 loop.  
 So the code here has changed and `imageUploadPromises` has be renamed to
 `imageUrls` to more declaratively represent what Type the Array is.
+
+## Correction: unused state in PropertyMap.jsx
+
+We currently have a **viewbox** state in our [PropertyMap.jsx](components/PropertyMap.jsx)
+but we never actually use that state, so it can be completely removed from the component.
 
 ## License
 
