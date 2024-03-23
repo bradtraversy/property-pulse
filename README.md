@@ -273,6 +273,12 @@ directly in our server components.
 - [components/HomeProperties.jsx](components/HomeProperties.jsx)
 - [components/FeaturedProperties.jsx](components/FeaturedProperties.jsx)
 
+The above changes also depend on marking
+[PropertyImages](components/PropertyImages.jsx) and
+[ShareButtons](components/ShareButtons.jsx)
+to client components as these both require client side JavaScript for user
+interaction.
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
