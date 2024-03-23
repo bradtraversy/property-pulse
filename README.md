@@ -258,6 +258,20 @@ So the code here has changed and `imageUploadPromises` has be renamed to
 We currently have a **viewbox** state in our [PropertyMap.jsx](components/PropertyMap.jsx)
 but we never actually use that state, so it can be completely removed from the component.
 
+# Refactor to use Server components
+
+The original course code was intended as an easy transition for students coming
+from the MERN stack and so adopts a similar approach to a MERN application by using
+mostly client components and making fetch requests to API routes for our data.
+
+This **refactor** branch attempts to refactor the application to take a more modern
+Next 14+ approach by using mostly server components and querying the database
+directly in our server components.
+
+## Client components that can be moved to server components
+
+- [components/HomeProperties.jsx](components/HomeProperties.jsx)
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details

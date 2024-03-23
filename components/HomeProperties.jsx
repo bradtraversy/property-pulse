@@ -1,13 +1,22 @@
 import Link from 'next/link';
 import PropertyCard from '@/components/PropertyCard';
-import { fetchProperties } from '@/utils/requests';
+import connectDB from '@/config/database';
+import Property from '@/models/Property';
 
 const HomeProperties = async () => {
-  const data = await fetchProperties();
+  // NOTE: Here it is better to query the DB directly as we are in a server
+  // component, so should not be making a request to our API route.
+  // Making a fetch request from a server component to a API route is an
+  // unnecessary additional step and you also need a full URL, i.e.
+  // localhost:3000 in dev or the site URL in production.
 
-  const recentProperties = data.properties
-    .sort(() => Math.random() - Math.random())
-    .slice(0, 3);
+  await connectDB();
+
+  // Get the 3 latest properties
+  const recentProperties = await Property.find({})
+    .sort({ createdAt: -1 })
+    .limit(3)
+    .lean();
 
   return (
     <>
