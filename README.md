@@ -271,6 +271,7 @@ directly in our server components.
 ## Client components that can be moved to server components
 
 - [components/HomeProperties.jsx](components/HomeProperties.jsx)
+- [components/FeaturedProperties.jsx](components/FeaturedProperties.jsx)
 
 ## License
 
