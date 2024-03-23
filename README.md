@@ -268,16 +268,23 @@ This **refactor** branch attempts to refactor the application to take a more mod
 Next 14+ approach by using mostly server components and querying the database
 directly in our server components.
 
+This branch is built on top of the **bugfix** branch so includes all the bug
+fixes and corrections above.
+
 ## Client components that can be moved to server components
 
 - [components/HomeProperties.jsx](components/HomeProperties.jsx)
 - [components/FeaturedProperties.jsx](components/FeaturedProperties.jsx)
+- [app/properties/[id]/page.jsx](app/properties/[id]/page.jsx)
 
 The above changes also depend on marking
 [PropertyImages](components/PropertyImages.jsx) and
 [ShareButtons](components/ShareButtons.jsx)
 to client components as these both require client side JavaScript for user
 interaction.
+
+We also need a small utility function [convertToSerializeableObject](utils/convertToObject.js) as the result of querying our DB using Mongoose gives us back a instance of the Model, but to pass this to our client components the Object needs to be plain JavaScript Object.  
+So first we call [Model.lean](https://mongoosejs.com/docs/tutorials/lean.html) on the query and then use our utility function to change any properties that have a `.toString` or `.toJSON` method on them to their respective `String` value.
 
 ## License
 
