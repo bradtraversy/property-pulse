@@ -4,8 +4,8 @@ import connectDB from '@/config/database';
 import Property from '@/models/Property';
 
 const HomeProperties = async () => {
-  // NOTE: Here it is better to query the DB directly as we are in a server
-  // component, so should not be making a request to our API route.
+  // NOTE: Here we can query the DB directly if we use a server
+  // component, so no need to make a request to a API route.
   // Making a fetch request from a server component to a API route is an
   // unnecessary additional step and you also need a full URL, i.e.
   // localhost:3000 in dev or the site URL in production.
