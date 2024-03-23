@@ -34,6 +34,8 @@ The `_theme_files` folder contains the pure HTML files with Tailwind classes.
   - [Correction: Remove unused **loading** prop from LoadingPage](#correction-remove-unused-loading-prop-from-loadingpage)
   - [Correction: awaiting resolution of an array of strings](#correction-awaiting-resolution-of-an-array-of-strings)
   - [Correction: unused state in PropertyMap.jsx](#correction-unused-state-in-propertymapjsx)
+- [Refactor to use Server components](#refactor-to-use-server-components)
+  - [Client components that can be moved to server components](#client-components-that-can-be-moved-to-server-components)
   - [License](#license)
   <!--toc:end-->
 
