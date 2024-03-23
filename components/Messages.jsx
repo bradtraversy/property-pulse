@@ -1,34 +1,38 @@
-'use client';
-import { useState, useEffect } from 'react';
-import Spinner from '@/components/Spinner';
-import Message from '@/components/Message';
+import MessageCard from '@/components/Message';
+import connectDB from '@/config/database';
+import Message from '@/models/Message';
+import { getSessionUser } from '@/utils/getSessionUser';
 
-const Messages = () => {
-  const [messages, setMessages] = useState([]);
-  const [loading, setLoading] = useState(true);
+// NOTE: This component has been changed to a server component so we can query
+// the DB directly without the need for a fetch request to an API route.
 
-  useEffect(() => {
-    const getMessages = async () => {
-      try {
-        const res = await fetch('/api/messages');
+const Messages = async () => {
+  await connectDB();
 
-        if (res.status === 200) {
-          const data = await res.json();
-          setMessages(data);
-        }
-      } catch (error) {
-        console.log('Error fetching messages: ', error);
-      } finally {
-        setLoading(false);
-      }
-    };
+  const sessionUser = await getSessionUser();
 
-    getMessages();
-  }, []);
+  const { userId } = sessionUser;
 
-  return loading ? (
-    <Spinner loading={loading} />
-  ) : (
+  const readMessages = await Message.find({ recipient: userId, read: true })
+    .sort({ createdAt: -1 }) // Sort read messages in asc order
+    .populate('sender', 'username')
+    .populate('property', 'name')
+    .lean();
+
+  const unreadMessages = await Message.find({
+    recipient: userId,
+    read: false,
+  })
+    .sort({ createdAt: -1 }) // Sort read messages in asc order
+    .populate('sender', 'username')
+    .populate('property', 'name')
+    .lean();
+
+  const messages = [...unreadMessages, ...readMessages];
+
+  // TODO: Fallback to loader
+
+  return (
     <section className='bg-blue-50'>
       <div className='container m-auto py-24 max-w-6xl'>
         <div className='bg-white px-6 py-8 mb-4 shadow-md rounded-md border m-4 md:m-0'>
@@ -39,7 +43,7 @@ const Messages = () => {
               <p>You have no messages</p>
             ) : (
               messages.map((message) => (
-                <Message key={message._id} message={message} />
+                <MessageCard key={message._id} message={message} />
               ))
             )}
           </div>

@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { useGlobalContext } from '@/context/GlobalContext';
 
-const Message = ({ message }) => {
+const MessageCard = ({ message }) => {
   const [isRead, setIsRead] = useState(message.read);
   const [isDeleted, setIsDeleted] = useState(false);
 
@@ -104,4 +104,4 @@ const Message = ({ message }) => {
     </div>
   );
 };
-export default Message;
+export default MessageCard;

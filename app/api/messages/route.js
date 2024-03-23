@@ -7,42 +7,7 @@ export const dynamic = 'force-dynamic';
 // NOTE: here we need to send back a Content-Type: application/json response
 // header rather than a text/plain header.
 
-// GET /api/messages
-export const GET = async () => {
-  try {
-    await connectDB();
-
-    const sessionUser = await getSessionUser();
-
-    if (!sessionUser || !sessionUser.user) {
-      return new Response('User ID is required', {
-        status: 401,
-      });
-    }
-
-    const { userId } = sessionUser;
-
-    const readMessages = await Message.find({ recipient: userId, read: true })
-      .sort({ createdAt: -1 }) // Sort read messages in asc order
-      .populate('sender', 'username')
-      .populate('property', 'name');
-
-    const unreadMessages = await Message.find({
-      recipient: userId,
-      read: false,
-    })
-      .sort({ createdAt: -1 }) // Sort read messages in asc order
-      .populate('sender', 'username')
-      .populate('property', 'name');
-
-    const messages = [...unreadMessages, ...readMessages];
-
-    return Response.json(messages);
-  } catch (error) {
-    console.log(error);
-    return new Response('Something went wrong', { status: 500 });
-  }
-};
+// NOTE: the GET function is no longer used as we can server render the Messages
 
 // POST /api/messages
 export const POST = async (request) => {
