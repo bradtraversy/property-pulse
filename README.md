@@ -278,6 +278,7 @@ fixes and corrections above.
 - [components/HomeProperties.jsx](components/HomeProperties.jsx)
 - [components/FeaturedProperties.jsx](components/FeaturedProperties.jsx)
 - [app/properties/[id]/page.jsx](app/properties/[id]/page.jsx)
+- [app/properties/search-results/page.jsx](app/properties/search-results/page.jsx)
 
 The above changes also depend on marking
 [PropertyImages](components/PropertyImages.jsx) and
@@ -290,6 +291,8 @@ So first we call [Model.lean](https://mongoosejs.com/docs/tutorials/lean.html) o
 
 With the above changes in place we no longer need a `fetchProperties` function
 in our [utils/requests.js](utils/requests.js) module.
+
+We can remove our **app/api/properties/search/route.js** as it's no longer used.
 
 ## License
 
