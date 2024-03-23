@@ -286,6 +286,9 @@ interaction.
 We also need a small utility function [convertToSerializeableObject](utils/convertToObject.js) as the result of querying our DB using Mongoose gives us back a instance of the Model, but to pass this to our client components the Object needs to be plain JavaScript Object.  
 So first we call [Model.lean](https://mongoosejs.com/docs/tutorials/lean.html) on the query and then use our utility function to change any properties that have a `.toString` or `.toJSON` method on them to their respective `String` value.
 
+With the above changes in place we no longer need a `fetchProperties` function
+in our [utils/requests.js](utils/requests.js) module.
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
