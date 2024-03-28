@@ -302,6 +302,21 @@ to the page component and remove `Messages`. Additionally [app/messages/page.jsx
 
 We can then remove the **GET** function from our [app/api/messages/route.js](app/api/messages/route.js) as it's no longer used.
 
+### Changes to app/properties/page.jsx
+
+Currently [app/properties/page.jsx](app/properties/page.jsx) is a server
+component but in turn renders [components/Properties.jsx](components/Properties.jsx) on the client and the `Properties` component then makes a fetch request to an API route handler in [app/api/properties/route.js](app/api/properties/route.js) but with the page being server rendered there is no need to do this as we can query the DB directly in our server component and pass props to `Properties` and in turn our `Pagination` component. We can even access the search params in our server component props for querying the DB for pagination.
+
+**Changes can be seen in**
+
+- [app/properties/page.jsx](app/properties/page.jsx)
+- [components/Properties.jsx](components/Properties.jsx)
+- [components/Pagination.jsx](components/Pagination.jsx)
+
+With the above changes we can then remove the `GET` route handler function from
+[app/api/properties/route.jsx](app/api/properties/route.jsx) as it's no longer
+used.
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details

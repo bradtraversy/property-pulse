@@ -4,29 +4,8 @@ import { getSessionUser } from '@/utils/getSessionUser';
 import cloudinary from '@/config/cloudinary';
 
 // GET /api/properties
-export const GET = async (request) => {
-  try {
-    await connectDB();
-
-    const page = request.nextUrl.searchParams.get('page') || 1;
-    const pageSize = request.nextUrl.searchParams.get('pageSize') || 6;
-
-    const skip = (page - 1) * pageSize;
-
-    const total = await Property.countDocuments({});
-    const properties = await Property.find({}).skip(skip).limit(pageSize);
-
-    const result = {
-      total,
-      properties,
-    };
-
-    return Response.json(result);
-  } catch (error) {
-    console.log(error);
-    return new Response('Something Went Wrong', { status: 500 });
-  }
-};
+// NOTE: GET handler removed as it is no longer used as we can query the db
+// directly from server components.
 
 export const POST = async (request) => {
   try {
@@ -60,9 +39,12 @@ export const POST = async (request) => {
         state: formData.get('location.state'),
         zipcode: formData.get('location.zipcode'),
       },
+      // FIX: beds and baths should be of type Number
       beds: formData.get('beds'),
       baths: formData.get('baths'),
       square_feet: formData.get('square_feet'),
+      // FIX: rates in our Property Model are of type 'Number' but from the
+      // formData they will be of Type 'String'
       amenities,
       rates: {
         weekly: formData.get('rates.weekly'),
