@@ -307,7 +307,11 @@ We can then remove the **GET** function from our [app/api/messages/route.js](app
 ## Changes to app/properties/page.jsx
 
 Currently [app/properties/page.jsx](app/properties/page.jsx) is a server
-component but in turn renders [components/Properties.jsx](components/Properties.jsx) on the client and the `Properties` component then makes a fetch request to an API route handler in [app/api/properties/route.js](app/api/properties/route.js) but with the page being server rendered there is no need to do this as we can query the DB directly in our server component and pass props to `Properties` and in turn our `Pagination` component. We can even access the search params in our server component props for querying the DB for pagination.
+component but in turn renders [components/Properties.jsx](components/Properties.jsx) on the client and the `Properties` component then makes a fetch request to an API route handler in [app/api/properties/route.js](app/api/properties/route.js) but with the page being server rendered there is no need to do this as we can query the DB directly in our server component and pass props to `Properties` and in turn our `Pagination` component. We can even access the search params in our server component props for querying the DB for pagination.  
+Our `Pagination` component can also be a server component and instead of buttons
+with click events to navigate the user to the **next** / **prev** pages we can
+use a `Link` component and conditionally render based on if there are next or
+previous pages.
 
 **Changes can be seen in**
 
