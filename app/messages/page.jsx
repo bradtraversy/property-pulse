@@ -1,6 +1,10 @@
 import MessageCard from '@/components/Message';
 import connectDB from '@/config/database';
 import Message from '@/models/Message';
+// NOTE: Import the Property model so it is instantiated in our serverless
+// environment to be able to call Message.populate
+import '@/models/Property';
+import { convertToSerializeableObject } from '@/utils/convertToObject';
 import { getSessionUser } from '@/utils/getSessionUser';
 
 // NOTE: This component has been changed to a server component so we can query
@@ -28,7 +32,13 @@ const MessagePage = async () => {
     .populate('property', 'name')
     .lean();
 
-  const messages = [...unreadMessages, ...readMessages];
+  // Convert to serializable object so we can pass to client component.
+  const messages = [...unreadMessages, ...readMessages].map((messageDoc) => {
+    const message = convertToSerializeableObject(messageDoc);
+    message.sender = convertToSerializeableObject(messageDoc.sender);
+    message.property = convertToSerializeableObject(messageDoc.property);
+    return message;
+  });
 
   // TODO: Fallback to loader
 
