@@ -36,6 +36,8 @@ The `_theme_files` folder contains the pure HTML files with Tailwind classes.
   - [Correction: unused state in PropertyMap.jsx](#correction-unused-state-in-propertymapjsx)
 - [Refactor to use Server components](#refactor-to-use-server-components)
   - [Client components that can be moved to server components](#client-components-that-can-be-moved-to-server-components)
+    - [Remove components/Messages.jsx and change the page to a server component](#remove-componentsmessagesjsx-and-change-the-page-to-a-server-component)
+    - [Changes to app/properties/page.jsx](#changes-to-apppropertiespagejsx)
   - [License](#license)
   <!--toc:end-->
 
