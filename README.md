@@ -36,8 +36,8 @@ The `_theme_files` folder contains the pure HTML files with Tailwind classes.
   - [Correction: unused state in PropertyMap.jsx](#correction-unused-state-in-propertymapjsx)
 - [Refactor to use Server components](#refactor-to-use-server-components)
   - [Client components that can be moved to server components](#client-components-that-can-be-moved-to-server-components)
-    - [Remove components/Messages.jsx and change the page to a server component](#remove-componentsmessagesjsx-and-change-the-page-to-a-server-component)
-    - [Changes to app/properties/page.jsx](#changes-to-apppropertiespagejsx)
+  - [Remove components/Messages.jsx and change the page to a server component](#remove-componentsmessagesjsx-and-change-the-page-to-a-server-component)
+  - [Changes to app/properties/page.jsx](#changes-to-apppropertiespagejsx)
   - [License](#license)
   <!--toc:end-->
 
@@ -296,7 +296,7 @@ in our [utils/requests.js](utils/requests.js) module.
 
 We can remove our **app/api/properties/search/route.js** as it's no longer used.
 
-### Remove components/Messages.jsx and change the page to a server component
+## Remove components/Messages.jsx and change the page to a server component
 
 The [app/messages/page.jsx](app/message/page.jsx) component just returns the
 `Messages` component so it seems simpler to just move the contents of `Messages`
@@ -304,7 +304,7 @@ to the page component and remove `Messages`. Additionally [app/messages/page.jsx
 
 We can then remove the **GET** function from our [app/api/messages/route.js](app/api/messages/route.js) as it's no longer used.
 
-### Changes to app/properties/page.jsx
+## Changes to app/properties/page.jsx
 
 Currently [app/properties/page.jsx](app/properties/page.jsx) is a server
 component but in turn renders [components/Properties.jsx](components/Properties.jsx) on the client and the `Properties` component then makes a fetch request to an API route handler in [app/api/properties/route.js](app/api/properties/route.js) but with the page being server rendered there is no need to do this as we can query the DB directly in our server component and pass props to `Properties` and in turn our `Pagination` component. We can even access the search params in our server component props for querying the DB for pagination.
