@@ -279,6 +279,7 @@ fixes and corrections above.
 - [components/FeaturedProperties.jsx](components/FeaturedProperties.jsx)
 - [app/properties/[id]/page.jsx](app/properties/[id]/page.jsx)
 - [app/properties/search-results/page.jsx](app/properties/search-results/page.jsx)
+- [components/Messages.jsx](components/Messages.jsx)
 
 The above changes also depend on marking
 [PropertyImages](components/PropertyImages.jsx) and
@@ -293,6 +294,8 @@ With the above changes in place we no longer need a `fetchProperties` function
 in our [utils/requests.js](utils/requests.js) module.
 
 We can remove our **app/api/properties/search/route.js** as it's no longer used.
+
+We can remove the **GET** function from our [app/api/messages/route.js](app/api/messages/route.js) as it's no longer used.
 
 ## License
 
