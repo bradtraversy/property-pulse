@@ -1,39 +1,23 @@
-'use client';
-import { useState, useEffect } from 'react';
 import PropertyCard from '@/components/PropertyCard';
-import Spinner from '@/components/Spinner';
-import { toast } from 'react-toastify';
+import connectDB from '@/config/database';
+import Property from '@/models/Property';
+import User from '@/models/User';
+import { getSessionUser } from '@/utils/getSessionUser';
 
-const SavedPropertiesPage = () => {
-  const [properties, setProperties] = useState([]);
-  const [loading, setLoading] = useState(true);
+const SavedPropertiesPage = async () => {
+  await connectDB();
 
-  useEffect(() => {
-    const fetchSavedProperties = async () => {
-      try {
-        const res = await fetch('/api/bookmarks');
+  const sessionUser = await getSessionUser();
 
-        if (res.status === 200) {
-          const data = await res.json();
-          setProperties(data);
-        } else {
-          console.log(res.statusText);
-          toast.error('Failed to fetch saved properties');
-        }
-      } catch (error) {
-        console.log(error);
-        toast.error('Failed to fetch saved properties');
-      } finally {
-        setLoading(false);
-      }
-    };
+  const { userId } = sessionUser;
 
-    fetchSavedProperties();
-  }, []);
+  // Find user in database
+  const user = await User.findOne({ _id: userId });
 
-  return loading ? (
-    <Spinner loading={loading} />
-  ) : (
+  // Get users bookmarks
+  const properties = await Property.find({ _id: { $in: user.bookmarks } });
+
+  return (
     <section className='px-4 py-6'>
       <div className='container-xl lg:container m-auto px-4 py-6'>
         <h1 className='text-2xl mb-4'>Saved Properties</h1>

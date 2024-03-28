@@ -1,6 +1,5 @@
 import connectDB from '@/config/database';
 import User from '@/models/User';
-import Property from '@/models/Property';
 import { getSessionUser } from '@/utils/getSessionUser';
 
 export const dynamic = 'force-dynamic';
@@ -9,30 +8,8 @@ export const dynamic = 'force-dynamic';
 // header rather than a text/plain header.
 
 // GET /api/bookmarks
-export const GET = async () => {
-  try {
-    await connectDB();
-
-    const sessionUser = await getSessionUser();
-
-    if (!sessionUser || !sessionUser.userId) {
-      return new Response('User ID is required', { status: 401 });
-    }
-
-    const { userId } = sessionUser;
-
-    // Find user in database
-    const user = await User.findOne({ _id: userId });
-
-    // Get users bookmarks
-    const bookmarks = await Property.find({ _id: { $in: user.bookmarks } });
-
-    return Response.json(bookmarks);
-  } catch (error) {
-    console.log(error);
-    return new Response('Something went wrong', { status: 500 });
-  }
-};
+// We no longer need this route handler as the page is a server component so can
+// query the db directly.
 
 export const POST = async (request) => {
   try {
