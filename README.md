@@ -316,7 +316,7 @@ component but in turn renders [components/Properties.jsx](components/Properties.
 - [components/Pagination.jsx](components/Pagination.jsx)
 
 With the above changes we can then remove the `GET` route handler function from
-[app/api/properties/route.jsx](app/api/properties/route.jsx) as it's no longer
+[app/api/properties/route.js](app/api/properties/route.js) as it's no longer
 used.
 
 ## License
