@@ -1,8 +1,23 @@
 'use client';
+import addProperty from '@/app/actions/addProperty';
 import { toast } from 'react-toastify';
+import { useFormStatus } from 'react-dom';
 
-// TODO: Give the user some feedback about the form submission before being
-// redirected
+// NOTE: Give the user some feedback about the form submission before being
+// redirected by using a SubmitButton component that uses the useFormStatus hook
+
+function SubmitButton() {
+  const status = useFormStatus();
+  return (
+    <button
+      className='bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline'
+      type='submit'
+      disabled={status.pending}
+    >
+      {status.pending ? 'Adding Property...' : 'Add Property'}
+    </button>
+  );
+}
 
 const PropertyAddForm = () => {
   // NOTE: checking for component is mounted is unnecessary so has been removed.
@@ -18,8 +33,11 @@ const PropertyAddForm = () => {
     }
   };
 
+  // NOTE: this component has been changed to use a server action so we no
+  // longer need a API route handler for a POST at app/api/properites/route.js
+
   return (
-    <form action='/api/properties' method='POST' encType='multipart/form-data'>
+    <form action={addProperty}>
       <h2 className='text-3xl text-center font-semibold mb-6'>Add Property</h2>
 
       <div className='mb-4'>
@@ -411,12 +429,7 @@ const PropertyAddForm = () => {
       </div>
 
       <div>
-        <button
-          className='bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline'
-          type='submit'
-        >
-          Add Property
-        </button>
+        <SubmitButton />
       </div>
     </form>
   );

@@ -38,6 +38,7 @@ The `_theme_files` folder contains the pure HTML files with Tailwind classes.
   - [Client components that can be moved to server components](#client-components-that-can-be-moved-to-server-components)
   - [Remove components/Messages.jsx and change the page to a server component](#remove-componentsmessagesjsx-and-change-the-page-to-a-server-component)
   - [Changes to app/properties/page.jsx](#changes-to-apppropertiespagejsx)
+  - [Use a server action to add a property](#use-a-server-action-to-add-a-property)
   - [License](#license)
   <!--toc:end-->
 
@@ -325,6 +326,23 @@ previous pages.
 With the above changes we can then remove the `GET` route handler function from
 [app/api/properties/route.js](app/api/properties/route.js) as it's no longer
 used.
+
+## Use a server action to add a property
+
+Our [components/PropertyAddForm.jsx](components/PropertyAddForm.jsx) can use a
+[Server Action](https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions-and-mutations)
+to submit the form, this removes the need for an API **POST** route handler in **app/properties/route.js** The **GET** has already been removed with previous changes so we can now delete that file.  
+A server action automatically receives the **FormData** from the submitted form.
+Additionally by using a server action we can now also use the [useFormStatus
+hook](https://react.dev/reference/react-dom/hooks/useFormStatus) to give the
+user some feedback about the state of adding their property before redirecting
+them.
+
+**Changes can be seen in**
+
+- [components/PropertyAddForm.jsx](components/PropertyAddForm.jsx)
+- Delete file: [app/api/properties/route.js](app/api/properties/route.js)
+- Create file: [app/actions/addProperty.js](app/actions/addProperty.js)
 
 ## License
 
