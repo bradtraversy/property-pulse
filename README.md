@@ -331,7 +331,7 @@ used.
 
 Our [components/PropertyAddForm.jsx](components/PropertyAddForm.jsx) can use a
 [Server Action](https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions-and-mutations)
-to submit the form, this removes the need for an API **POST** route handler in **app/properties/route.js** The **GET** has already been removed with previous changes so we can now delete that file.  
+to submit the form, this removes the need for an API **POST** route handler in **app/api/properties/route.js** The **GET** has already been removed with previous changes so we can now delete that file.  
 A server action automatically receives the **FormData** from the submitted form.
 Additionally by using a server action we can now also use the [useFormStatus
 hook](https://react.dev/reference/react-dom/hooks/useFormStatus) to give the
