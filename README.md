@@ -39,6 +39,7 @@ The `_theme_files` folder contains the pure HTML files with Tailwind classes.
   - [Remove components/Messages.jsx and change the page to a server component](#remove-componentsmessagesjsx-and-change-the-page-to-a-server-component)
   - [Changes to app/properties/page.jsx](#changes-to-apppropertiespagejsx)
   - [Use a server action to add a property](#use-a-server-action-to-add-a-property)
+  - [Use a server action to update a property](#use-a-server-action-to-update-a-property)
   - [License](#license)
   <!--toc:end-->
 
@@ -339,13 +340,39 @@ A server action automatically receives the **FormData** from the submitted form.
 Additionally by using a server action we can now also use the [useFormStatus
 hook](https://react.dev/reference/react-dom/hooks/useFormStatus) to give the
 user some feedback about the state of adding their property before redirecting
-them.
+them. This is implemented in a new component in [components/SubmitButton.jsx](components/SubmitButton.jsx) which we can drop in to any form to give some simple feedback to the user about if the form is being submitted or not.
 
 **Changes can be seen in**
 
 - [components/PropertyAddForm.jsx](components/PropertyAddForm.jsx)
 - Delete file: [app/api/properties/route.js](app/api/properties/route.js)
 - Create file: [app/actions/addProperty.js](app/actions/addProperty.js)
+- Create file: [components/SubmitButton.jsx](components/SubmitButton.jsx)
+
+## Use a server action to update a property
+
+Much like our **PropertyAddForm** above we can also submit the form via a server
+action.  
+Our [app/properties/[id]/edit/page.jsx](app/properties/[id]/edit/page.jsx) page
+component is already a server component so we can query the DB directly for the
+property we want to update and pass this as a prop to our [PropertEditForm](components/PropertyEditForm.jsx), we can then use this data to pre populate the input values with the existing values and remove all the state, hooks and onChange event handlers from the PropertyEditForm component.  
+We can also reuse our new [components/SubmitButton.jsx](components/SubmitButton.jsx) component to again give the user some feedback about the state of the form submission.
+
+With these changes in place we can then remove the **GET /api/properties/:id**
+route handler and the **PUT /api/properties/:id** route handler from [app/api/properties/[id]/route.js](app/api/properties/[id]/route.js) as they are no longer used.
+
+While we are here it's also worth modifying our [middleware.js](middleware.js)
+to make the edit page only accessible to authenticated users.
+
+**Changes can be seen in**
+
+- [app/properties/[id]/edit/page.jsx](app/properties/[id]/edit/page.jsx)
+- [components/PropertyEditForm.jsx](components/PropertyEditForm.jsx)
+- [app/api/properties/[id]/route.js](app/api/properties/[id]/route.js
+- [middleware.js](middleware.js)
+- Create file: [app/actions/updateProperty.js](app/actions/updateProperty.js)
+
+---
 
 ## License
 
