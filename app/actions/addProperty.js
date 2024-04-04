@@ -13,7 +13,7 @@ async function addProperty(formData) {
   const sessionUser = await getSessionUser();
 
   if (!sessionUser || !sessionUser.userId) {
-    return new Response('User ID is required', { status: 401 });
+    new Error('User ID is required');
   }
 
   const { userId } = sessionUser;
