@@ -4,6 +4,9 @@ import Property from '@/models/Property';
 import User from '@/models/User';
 import { getSessionUser } from '@/utils/getSessionUser';
 
+// NOTE: In a server component we can query the DB directly withouth the need
+// for making a fetch request to a API route handler.
+
 const SavedPropertiesPage = async () => {
   await connectDB();
 
