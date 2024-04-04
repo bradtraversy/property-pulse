@@ -1,23 +1,7 @@
 'use client';
 import addProperty from '@/app/actions/addProperty';
 import { toast } from 'react-toastify';
-import { useFormStatus } from 'react-dom';
-
-// NOTE: Give the user some feedback about the form submission before being
-// redirected by using a SubmitButton component that uses the useFormStatus hook
-
-function SubmitButton() {
-  const status = useFormStatus();
-  return (
-    <button
-      className='bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline'
-      type='submit'
-      disabled={status.pending}
-    >
-      {status.pending ? 'Adding Property...' : 'Add Property'}
-    </button>
-  );
-}
+import SubmitButton from './SubmitButton';
 
 const PropertyAddForm = () => {
   // NOTE: checking for component is mounted is unnecessary so has been removed.
