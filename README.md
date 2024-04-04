@@ -353,22 +353,22 @@ them. This is implemented in a new component in [components/SubmitButton.jsx](co
 
 Much like our **PropertyAddForm** above we can also submit the form via a server
 action.  
-Our [app/properties/[id]/edit/page.jsx](app/properties/[id]/edit/page.jsx) page
+Our [app/properties/\[id\]/edit/page.jsx](app/properties/[id]/edit/page.jsx) page
 component is already a server component so we can query the DB directly for the
 property we want to update and pass this as a prop to our [PropertEditForm](components/PropertyEditForm.jsx), we can then use this data to pre populate the input values with the existing values and remove all the state, hooks and onChange event handlers from the PropertyEditForm component.  
 We can also reuse our new [components/SubmitButton.jsx](components/SubmitButton.jsx) component to again give the user some feedback about the state of the form submission.
 
 With these changes in place we can then remove the **GET /api/properties/:id**
-route handler and the **PUT /api/properties/:id** route handler from [app/api/properties/[id]/route.js](app/api/properties/[id]/route.js) as they are no longer used.
+route handler and the **PUT /api/properties/:id** route handler from [app/api/properties/\[id\]/route.js](app/api/properties/[id]/route.js) as they are no longer used.
 
 While we are here it's also worth modifying our [middleware.js](middleware.js)
 to make the edit page only accessible to authenticated users.
 
 **Changes can be seen in**
 
-- [app/properties/[id]/edit/page.jsx](app/properties/[id]/edit/page.jsx)
+- [app/properties/\[id\]/edit/page.jsx](app/properties/[id]/edit/page.jsx)
 - [components/PropertyEditForm.jsx](components/PropertyEditForm.jsx)
-- [app/api/properties/[id]/route.js](app/api/properties/[id]/route.js
+- [app/api/properties/\[id\]/route.js](app/api/properties/[id]/route.js)
 - [middleware.js](middleware.js)
 - Create file: [app/actions/updateProperty.js](app/actions/updateProperty.js)
 
