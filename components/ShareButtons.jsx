@@ -11,7 +11,12 @@ import {
 } from 'react-share';
 
 const ShareButtons = ({ property }) => {
-  const shareUrl = `${process.env.NEXT_PUBLIC_DOMAIN}/properties/${property._id}`;
+  // NOTE: here we can check if we are runningin in production on vercel and get
+  // the public url at build time, or fall back to localhost in development.
+  const PUBLIC_DOMAIN = process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : 'http://localhost:3000';
+  const shareUrl = `${PUBLIC_DOMAIN}/properties/${property._id}`;
 
   return (
     <>

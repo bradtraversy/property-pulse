@@ -372,6 +372,26 @@ to make the edit page only accessible to authenticated users.
 - [middleware.js](middleware.js)
 - Create file: [app/actions/updateProperty.js](app/actions/updateProperty.js)
 
+# Further improvements
+
+## Using VERCEL_URL for the site url
+
+NextJS allows us to set env variables dynamically in our [next.config.mjs](next.config.mjs)
+We can use this to get the deployed site url at build time in production and
+fallback to **localhost** in development.  
+This avoids having to first deploy the site, then get the site url and manually
+set it as a env varialble after the build then rebuild the deployed app.  
+We can also do the same in our [ShareButtons.jsx](components/ShareButtons.jsx)
+
+Together with moving the majority of our data fetching to our server components
+and removing many of our API route handlers we can also remove **NEXT_PUBLIC_DOMAIN** and **NEXT_PUBLIC_API_DOMAIN** from our **.env** file which streamlines the process of moving to production from development.
+
+**Changes can be seen in**
+
+-- [components/ShareButtons.jsx](components/ShareButtons.jsx)
+-- [env.example](env.example)
+-- [next.config.mjs](next.config.mjs)
+
 ---
 
 ## License
