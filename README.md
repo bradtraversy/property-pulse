@@ -145,7 +145,7 @@ We can do this in our `DELETE` function in [app/api/properties/[id]/route.js](./
 
 If the mobile menu is open and the view port size changes (such as the user
 rotating their device) then the menu stays open and fills much of the screen.
-A simple solution would be to add an event listiener to the **Window** object
+A simple solution would be to add an event listener to the **Window** object
 for the **resize** event and close the menu.
 
 We can do this in our `useEffect` in [components/Navbar.jsx](./components/Navbar.jsx)
