@@ -390,9 +390,9 @@ and removing many of our API route handlers we can also remove **NEXT_PUBLIC_DOM
 
 **Changes can be seen in**
 
--- [components/ShareButtons.jsx](components/ShareButtons.jsx)
--- [env.example](env.example)
--- [next.config.mjs](next.config.mjs)
+- [components/ShareButtons.jsx](components/ShareButtons.jsx)
+- [env.example](env.example)
+- [next.config.mjs](next.config.mjs)
 
 ---
 
