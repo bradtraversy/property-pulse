@@ -126,7 +126,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 # Bug Fixes, corrections and code FAQ
 
-The code here in the main branch has been updated since the course was published to fix bugs found by students of the course and answer common questions, if you are looking to compare your code to that from the course lessons then
+The code here has been updated since the course was published to fix bugs found by students of the course and answer common questions, if you are looking to compare your code to that from the course lessons then
 please refer to the [originalcoursecode](https://github.com/bradtraversy/property-pulse/tree/originalCourseCode) branch of this repository.
 
 There are detailed notes in the comments that will hopefully help you understand
