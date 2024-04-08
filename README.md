@@ -276,6 +276,10 @@ This **refactor** branch attempts to refactor the application to take a more mod
 Next 14+ approach by using mostly server components and querying the database
 directly in our server components.
 
+NextJS themselves recommend whenever possible to fetch data in server components
+and mutating or updating data whenever possible in **Server Actions**
+[Source](https://nextjs.org/docs/app/building-your-application/data-fetching/patterns)
+
 This branch is built on top of the **bugfix** branch so includes all the bug
 fixes and corrections above.
 
