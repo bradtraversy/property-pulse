@@ -312,9 +312,9 @@ as it's no longer used.
 
 ## Remove components/Messages.jsx and change the page to a server component
 
-The [app/messages/page.jsx](app/message/page.jsx) component just returns the
+The [app/messages/page.jsx](app/messages/page.jsx) component just returns the
 `Messages` component so it seems simpler to just move the contents of `Messages`
-to the page component and remove `Messages`. Additionally [app/messages/page.jsx](app/message/page.jsx) can be made a server component.
+to the page component and remove `Messages`. Additionally [app/messages/page.jsx](app/messages/page.jsx) can be made a server component.
 
 We can then remove the **GET** function from our [app/api/messages/route.js](app/api/messages/route.js) as it's no longer used.
 
