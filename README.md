@@ -283,7 +283,7 @@ fixes and corrections above.
 
 - [components/HomeProperties.jsx](components/HomeProperties.jsx)
 - [components/FeaturedProperties.jsx](components/FeaturedProperties.jsx)
-- [app/properties/[id]/page.jsx](app/properties/[id]/page.jsx)
+- [app/properties/\[id\]/page.jsx](app/properties/[id]/page.jsx)
 - [app/properties/search-results/page.jsx](app/properties/search-results/page.jsx)
 - [app/properties/saved/page.jsx](app/properties/saved/page.jsx)
 
