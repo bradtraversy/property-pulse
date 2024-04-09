@@ -15,6 +15,12 @@ const PropertyPage = async ({ params }) => {
   // simply make this component a server component and query the DB directly.
   // Making a fetch request is an unnecessary additional step.
 
+  // NOTE: here we can check if we are runningin in production on vercel and get
+  // the public url at build time for the ShareButtons, or fall back to localhost in development.
+  const PUBLIC_DOMAIN = process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : 'http://localhost:3000';
+
   await connectDB();
 
   // query the property in the DB
@@ -52,7 +58,7 @@ const PropertyPage = async ({ params }) => {
             <PropertyDetails property={property} />
             <aside className='space-y-4'>
               <BookmarkButton property={property} />
-              <ShareButtons property={property} />
+              <ShareButtons property={property} PUBLIC_DOMAIN={PUBLIC_DOMAIN} />
               <PropertyContactForm property={property} />
             </aside>
           </div>

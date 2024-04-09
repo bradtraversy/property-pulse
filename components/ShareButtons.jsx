@@ -10,12 +10,11 @@ import {
   EmailIcon,
 } from 'react-share';
 
-const ShareButtons = ({ property }) => {
-  // NOTE: here we can check if we are runningin in production on vercel and get
-  // the public url at build time, or fall back to localhost in development.
-  const PUBLIC_DOMAIN = process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
-    : 'http://localhost:3000';
+const ShareButtons = ({ property, PUBLIC_DOMAIN }) => {
+  // NOTE: here we recieve a prop from our paretn page component which is
+  // server rendered and knows if we are in deployed to Vercel or developing
+  // locally.
+
   const shareUrl = `${PUBLIC_DOMAIN}/properties/${property._id}`;
 
   return (

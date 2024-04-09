@@ -389,6 +389,10 @@ This avoids having to first deploy the site, then get the site url and manually
 set it as a env varialble after the build then rebuild the deployed app.  
 We can also do the same in our [ShareButtons.jsx](components/ShareButtons.jsx)
 
+> NOTE: we need to check `process.env.VERCEL_URL` on the server so we do this in
+> the parent page component i.e.
+> [app/properties/\[id\]/page.jsx](app/properties/[id]/page.jsx)
+
 Together with moving the majority of our data fetching to our server components
 and removing many of our API route handlers we can also remove **NEXT_PUBLIC_DOMAIN** and **NEXT_PUBLIC_API_DOMAIN** from our **.env** file which streamlines the process of moving to production from development.  
 We only needed these because we were making fetch requests from server components to API route handlers.
