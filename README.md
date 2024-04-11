@@ -378,6 +378,32 @@ to make the edit page only accessible to authenticated users.
 - [middleware.js](middleware.js)
 - Create file: [app/actions/updateProperty.js](app/actions/updateProperty.js)
 
+## Make the profile page a server component
+
+Our [app/profile/page.jsx](app/profile/page.jsx) can be made into a server
+component and fetch the users properties by directly querying the database.  
+However we still need to dynamically update the users properties on the client
+if and when a property is deleted by the user.  
+We can do this by making a new client component [components/ProfileProperties.jsx](components/ProfileProperties.jsx) that receives the properties as a prop sets them in local state.
+
+### Deleting a property with a server action
+
+Server actions can be used for more than just form submissions, we can trigger
+them on a button click from a client component - [source](https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions-and-mutations#non-form-elements).  
+So we have a new action in [deleteProperty.js](app/actions/deleteProperty.js)
+that is triggered when the user clicks to delete a property.
+
+These changes mean we no longer need a [app/api/user/\[userId\]/route.js](app/api/user/[userId]/route.js) so we can delete that file.
+We also no longer need a **DELETE** route handler in our [app/api/properties/\[id\]/route.js](app/api/properties/[id]/route.js) and since this is the last route handler we were using in that file, we can now delete that file.
+
+**Changes can be seen in**
+
+- [app/profile/page.jsx](app/profile/page.jsx)
+- Create file: [components/ProfileProperties.jsx](components/ProfileProperties.jsx)
+- Create file: [app/actions/deleteProperty.js](app/actions/deleteProperty.js)
+- Delete file: [app/api/user/\[userId\]/route.js](app/api/user/[userId]/route.js)
+- Delete file: [app/api/properties/\[id\]/route.js](app/api/properties/[id]/route.js)
+
 # Further improvements
 
 ## Using VERCEL_URL for the site url
