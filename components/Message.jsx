@@ -1,7 +1,12 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { useGlobalContext } from '@/context/GlobalContext';
+import markMessageAsRead from '@/app/actions/markMessageAsRead';
+import deleteMessage from '@/app/actions/deleteMessage';
+
+// NOTE: This component now uses server actions to mark a message as read or
+// delete a message rather than using a fetch request to an API route handler.
 
 const MessageCard = ({ message }) => {
   const [isRead, setIsRead] = useState(message.read);
@@ -10,55 +15,31 @@ const MessageCard = ({ message }) => {
   const { setUnreadCount } = useGlobalContext();
 
   const handleReadClick = async () => {
-    try {
-      const res = await fetch(`/api/messages/${message._id}`, {
-        method: 'PUT',
-      });
+    const read = await markMessageAsRead(message._id);
 
-      if (res.status === 200) {
-        const { read } = await res.json();
-        setIsRead(read);
-        setUnreadCount((prevCount) => (read ? prevCount - 1 : prevCount + 1));
-        if (read) {
-          toast.success('Marked as read');
-        } else {
-          toast.success('Marked as new');
-        }
-      }
-    } catch (error) {
-      console.log(error);
-      toast.error('Something went wrong');
-    }
+    setIsRead(read);
+    setUnreadCount((prevCount) => (read ? prevCount - 1 : prevCount + 1));
+    toast.success(`Marked as ${read ? 'read' : 'new'}`);
   };
 
   const handleDeleteClick = async () => {
-    try {
-      const res = await fetch(`/api/messages/${message._id}`, {
-        method: 'DELETE',
-      });
-
-      if (res.status === 200) {
-        setIsDeleted(true);
-        setUnreadCount((prevCount) => prevCount - 1);
-        toast.success('Message Deleted');
-      }
-    } catch (error) {
-      console.log(error);
-      toast.error('Message was not deleted');
-    }
+    await deleteMessage(message._id);
+    setIsDeleted(true);
+    setUnreadCount((prevCount) => prevCount - 1);
+    toast.success('Message Deleted');
   };
 
   if (isDeleted) {
-    return null;
+    return <p>Deleted message</p>;
   }
 
   return (
     <div className='relative bg-white p-4 rounded-md shadow-md border border-gray-200'>
-      {!isRead && (
+      {!isRead ? (
         <div className='absolute top-2 right-2 bg-yellow-500 text-white px-2 py-1 rounded-md'>
           New
         </div>
-      )}
+      ) : null}
       <h2 className='text-xl mb-4'>
         <span className='font-bold'>Property Inquiry:</span>{' '}
         {message.property.name}

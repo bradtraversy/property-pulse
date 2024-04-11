@@ -42,6 +42,7 @@ The `_theme_files` folder contains the pure HTML files with Tailwind classes.
   - [Use a server action to update a property](#use-a-server-action-to-update-a-property)
   - [Make the profile page a server component](#make-the-profile-page-a-server-component)
     - [Deleting a property with a server action](#deleting-a-property-with-a-server-action)
+  - [Using server actions for deleting or marking a message as read](#using-server-actions-for-deleting-or-marking-a-message-as-read)
 - [Further improvements](#further-improvements)
   - [Using VERCEL_URL for the site url](#using-vercelurl-for-the-site-url)
   - [License](#license)
@@ -405,6 +406,20 @@ We also no longer need a **DELETE** route handler in our [app/api/properties/\[i
 - Create file: [app/actions/deleteProperty.js](app/actions/deleteProperty.js)
 - Delete file: [app/api/user/\[userId\]/route.js](app/api/user/[userId]/route.js)
 - Delete file: [app/api/properties/\[id\]/route.js](app/api/properties/[id]/route.js)
+
+## Using server actions for deleting or marking a message as read
+
+We have already made our [components/Message.jsx](components/Message.jsx) a
+server component that queries the database directly, we can also create two new
+server actions [app/actions/markMessageAsRead.js](app/actions/markMessageAsRead.js) and [app/actions/deleteMessage.js](app/actions/deleteMessage.js) to mark a message as read and to delete a message respectively.  
+With this in place we can then delete our [app/api/messages/\[id\]/route.js](app/api/messages/[id]/route.js)
+
+**Changes can be seen in**
+
+- [components/Message.jsx](components/Message.jsx)
+- Create file: [app/actions/markMessageAsRead.js](app/actions/markMessageAsRead.js)
+- Create file: [app/actions/deleteMessage.js](app/actions/deleteMessage.js)
+- Delete file: [app/api/messages/\[id\]/route.js](app/api/messages/[id]/route.js)
 
 # Further improvements
 
