@@ -40,6 +40,8 @@ The `_theme_files` folder contains the pure HTML files with Tailwind classes.
   - [Changes to app/properties/page.jsx](#changes-to-apppropertiespagejsx)
   - [Use a server action to add a property](#use-a-server-action-to-add-a-property)
   - [Use a server action to update a property](#use-a-server-action-to-update-a-property)
+  - [Make the profile page a server component](#make-the-profile-page-a-server-component)
+    - [Deleting a property with a server action](#deleting-a-property-with-a-server-action)
 - [Further improvements](#further-improvements)
   - [Using VERCEL_URL for the site url](#using-vercelurl-for-the-site-url)
   - [License](#license)
