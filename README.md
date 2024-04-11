@@ -43,6 +43,7 @@ The `_theme_files` folder contains the pure HTML files with Tailwind classes.
   - [Make the profile page a server component](#make-the-profile-page-a-server-component)
     - [Deleting a property with a server action](#deleting-a-property-with-a-server-action)
   - [Using server actions for deleting or marking a message as read](#using-server-actions-for-deleting-or-marking-a-message-as-read)
+  - [Using a server action for sending a message](#using-a-server-action-for-sending-a-message)
 - [Further improvements](#further-improvements)
   - [Using VERCEL_URL for the site url](#using-vercelurl-for-the-site-url)
   - [License](#license)
@@ -420,6 +421,20 @@ With this in place we can then delete our [app/api/messages/\[id\]/route.js](app
 - Create file: [app/actions/markMessageAsRead.js](app/actions/markMessageAsRead.js)
 - Create file: [app/actions/deleteMessage.js](app/actions/deleteMessage.js)
 - Delete file: [app/api/messages/\[id\]/route.js](app/api/messages/[id]/route.js)
+
+## Using a server action for sending a message
+
+We are already _getting_, _deleting_ and _marking as read_ the users messages using
+server components and server actions so the last one to do for this part of the
+application functionality is to make [components/PropertyContactForm.jsx](components/PropertyContactForm.jsx) use a [new server action](app/actions/addMessage.js) to send a message.  
+We can use the [useFormStatus](https://react.dev/reference/react-dom/hooks/useFormStatus) and [useFormState](https://react.dev/reference/react-dom/hooks/useFormState) hooks to give some feedback to the user about the state of the submission and show a toast message or error depending on the server response.  
+With these changes we can then delete the [app/api/messages/route.js](app/api/messages/route.js) file as it's not longer used.
+
+**Changes can be seen in**
+
+- [components/PropertyContactForm.jsx](components/PropertyContactForm.jsx)
+- Create file: [app/actions/addMessage.js](app/actions/addMessage.js)
+- Delete file: [app/api/messages/route.js](app/api/messages/route.js)
 
 # Further improvements
 
