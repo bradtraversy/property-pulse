@@ -41,7 +41,7 @@ const Message = ({ message }) => {
         setIsDeleted(true);
         // NOTE: Here we need to also check if the message is marked as read so
         // we don't take the unread count into negative numbers
-        setUnreadCount((prevCount) => (read ? prevCount - 1 : prevCount + 1));
+        setUnreadCount((prevCount) => (isRead ? prevCount : prevCount - 1));
         toast.success('Message Deleted');
       }
     } catch (error) {
