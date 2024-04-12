@@ -262,7 +262,7 @@ but we never actually use that state, so it can be completely removed from the c
 ## Bug: UnreadCount can be a negative number
 
 Currently if we say have **two unread** messages and **one read** message and we first mark the unread as read and then delete all three, the state for the GlobalProvider would be then **-3**
-The UI would not show -3 though as the conditional check in UnreadMessageCount would type coerce a negative number to a falsey value. But our state will be incorrect.
+The UI would not show -3 though as the conditional check in UnreadMessageCount would check for `unreadCount > 0`. But our state will be incorrect.
 
 We can fix this in our [components/Message.jsx](components/Message.jsx) by
 checking **read** while updating our **unreadCount** state.  
