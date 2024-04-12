@@ -45,6 +45,7 @@ The `_theme_files` folder contains the pure HTML files with Tailwind classes.
     - [Deleting a property with a server action](#deleting-a-property-with-a-server-action)
   - [Using server actions for deleting or marking a message as read](#using-server-actions-for-deleting-or-marking-a-message-as-read)
   - [Using a server action for sending a message](#using-a-server-action-for-sending-a-message)
+  - [Bookmark status and bookmarking a property server actions](#bookmark-status-and-bookmarking-a-property-server-actions)
 - [Further improvements](#further-improvements)
   - [Using VERCEL_URL for the site url](#using-vercelurl-for-the-site-url)
   - [License](#license)
@@ -445,6 +446,21 @@ With these changes we can then delete the [app/api/messages/route.js](app/api/me
 - [components/PropertyContactForm.jsx](components/PropertyContactForm.jsx)
 - Create file: [app/actions/addMessage.js](app/actions/addMessage.js)
 - Delete file: [app/api/messages/route.js](app/api/messages/route.js)
+
+## Bookmark status and bookmarking a property server actions
+
+In our [components/BookmarkButton.jsx](components/BookmarkButton.jsx) we can
+check the status of a bookmark for the user and toggle the bookmark by using two
+new server actions.  
+With this change we can then remove our [app/api/bookmarks/check/route.js](app/api/bookmarks/check/route.js) and [app/api/bookmarks/route.js](app/api/bookmarks/route.js) API route handlers.
+
+**Changes can be seen in**
+
+- [components/BookmarkButton.jsx](components/BookmarkButton.jsx)
+- Delete file: [app/api/bookmarks/check/route.js](app/api/bookmarks/check/route.js)
+- Delete file: [app/api/bookmarks/route.js](app/api/bookmarks/route.js)
+- Create file: [app/actions/checkBookmarkStatus.js](app/actions/checkBookmarkStatus.js)
+- Creaet file: [app/actions/bookmarkProperty.js](app/actions/bookmarkProperty.js)
 
 # Further improvements
 
