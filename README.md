@@ -46,8 +46,10 @@ The `_theme_files` folder contains the pure HTML files with Tailwind classes.
   - [Using server actions for deleting or marking a message as read](#using-server-actions-for-deleting-or-marking-a-message-as-read)
   - [Using a server action for sending a message](#using-a-server-action-for-sending-a-message)
   - [Bookmark status and bookmarking a property server actions](#bookmark-status-and-bookmarking-a-property-server-actions)
+  - [Get unread message count with a server action](#get-unread-message-count-with-a-server-action)
 - [Further improvements](#further-improvements)
   - [Using VERCEL_URL for the site url](#using-vercelurl-for-the-site-url)
+  - [TODO:](#todo)
   - [License](#license)
   <!--toc:end-->
 
@@ -461,6 +463,29 @@ With this change we can then remove our [app/api/bookmarks/check/route.js](app/a
 - Delete file: [app/api/bookmarks/route.js](app/api/bookmarks/route.js)
 - Create file: [app/actions/checkBookmarkStatus.js](app/actions/checkBookmarkStatus.js)
 - Creaet file: [app/actions/bookmarkProperty.js](app/actions/bookmarkProperty.js)
+
+## Get unread message count with a server action
+
+We have one remaining API route handler for getting the unread message count.  
+But we can use a server action here too.
+Currently we are making a fetch request to an API route handler to get the
+unread message count in our [UnreadMessageCount.jsx](components/UnreadMessageCount.jsx) component but since the
+[GlobalContext](context/GlobalContext.js) is responsible for managing this state
+then it makes sense to use our new server action in the GlobalContext Provider
+component, which we can do in a **useEffect**.  
+Fetching the unread message count does however rely on a user being currenlty
+logged in, so to be able to consume **AuthProvder** state our **GlobalContext**
+needs to be a descendent of the **AuthProvider**.
+
+**Changes can be seen in**
+
+- [app/layout.jsx](app/layout.jsx)
+- [components/UnreadMessageCount.jsx](components/UnreadMessageCount.jsx)
+- [components/Navbar.jsx](components/Navbar.jsx) (remove prop form
+  UnreadMessageCount component)
+- [context/GlobalContext.js](context/GlobalContext.js)
+- Create file: [app/actions/getUnreadMessageCount.js](app/actions/getUnreadMessageCount.js)
+- Delete file: [app/api/messages/unread-count/route.js](app/api/messages/unread-count/route.js)
 
 # Further improvements
 
