@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { useGlobalContext } from '@/context/GlobalContext';
 
@@ -39,7 +39,9 @@ const Message = ({ message }) => {
 
       if (res.status === 200) {
         setIsDeleted(true);
-        setUnreadCount((prevCount) => prevCount - 1);
+        // NOTE: Here we need to also check if the message is marked as read so
+        // we don't take the unread count into negative numbers
+        setUnreadCount((prevCount) => (read ? prevCount - 1 : prevCount + 1));
         toast.success('Message Deleted');
       }
     } catch (error) {

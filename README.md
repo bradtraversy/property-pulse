@@ -34,6 +34,7 @@ The `_theme_files` folder contains the pure HTML files with Tailwind classes.
   - [Correction: Remove unused **loading** prop from LoadingPage](#correction-remove-unused-loading-prop-from-loadingpage)
   - [Correction: awaiting resolution of an array of strings](#correction-awaiting-resolution-of-an-array-of-strings)
   - [Correction: unused state in PropertyMap.jsx](#correction-unused-state-in-propertymapjsx)
+  - [Bug: UnreadCount can be a negative number](#bug-unreadcount-can-be-a-negative-number)
   - [License](#license)
   <!--toc:end-->
 
@@ -257,6 +258,15 @@ So the code here has changed and `imageUploadPromises` has be renamed to
 
 We currently have a **viewbox** state in our [PropertyMap.jsx](components/PropertyMap.jsx)
 but we never actually use that state, so it can be completely removed from the component.
+
+## Bug: UnreadCount can be a negative number
+
+Currently if we say have **two unread** messages and **one read** message and we first mark the unread as read and then delete all three, the state for the GlobalProvider would be then **-3**
+The UI would not show -3 though as the conditional check in UnreadMessageCount would type coerce a negative number to a falsey value. But our state will be incorrect.
+
+We can fix this in our [components/Message.jsx](components/Message.jsx) by
+checking **read** while updating our **unreadCount** state.  
+While we are here we can also remove the unused import of **useEffect**
 
 ## License
 
