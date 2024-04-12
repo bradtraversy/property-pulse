@@ -481,15 +481,15 @@ Together with moving the majority of our data fetching to our server components
 and removing many of our API route handlers we can also remove **NEXT_PUBLIC_DOMAIN** and **NEXT_PUBLIC_API_DOMAIN** from our **.env** file which streamlines the process of moving to production from development.  
 We only needed these because we were making fetch requests from server components to API route handlers.
 
-## TODO:
-
-- Provide a **error.js** ErrorBoundry pages/component to catch errors
-
 **Changes can be seen in**
 
 - [components/ShareButtons.jsx](components/ShareButtons.jsx)
 - [env.example](env.example)
 - [next.config.mjs](next.config.mjs)
+
+## TODO:
+
+- Provide a **error.js** ErrorBoundry pages/component to catch errors
 
 ---
 
