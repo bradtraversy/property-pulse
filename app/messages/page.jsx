@@ -40,8 +40,6 @@ const MessagePage = async () => {
     return message;
   });
 
-  // TODO: Fallback to loader
-
   return (
     <section className='bg-blue-50'>
       <div className='container m-auto py-24 max-w-6xl'>

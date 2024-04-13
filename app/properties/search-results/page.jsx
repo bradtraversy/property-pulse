@@ -41,8 +41,6 @@ const SearchResultsPage = async ({
   const propertiesQueryResults = await Property.find(query).lean();
   const properties = convertToSerializeableObject(propertiesQueryResults);
 
-  // TODO: Fallback to loader
-
   return (
     <>
       <section className='bg-blue-700 py-4'>

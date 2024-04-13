@@ -5,7 +5,6 @@ import Pagination from '@/components/Pagination';
 // the page parent so no need to make a fetch request to an API route handler.
 
 const Properties = ({ properties, total, page, pageSize }) => {
-  // TODO: fallback to loader
   return (
     <section className='px-4 py-6'>
       <div className='container-xl lg:container m-auto px-4 py-6'>

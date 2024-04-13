@@ -1,9 +1,6 @@
 import updateProperty from '@/app/actions/updateProperty';
 import SubmitButton from './SubmitButton';
 
-// TODO: We could share a common Form component with AddPropertyForm
-// to a separate component and use in both AddPropertyForm and here.
-
 // NOTE: here we can submit via server action and give user feedback using useFormState.
 // This component has also been changed to a server component.
 
