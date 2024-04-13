@@ -13,10 +13,9 @@ import { convertToSerializeableObject } from '@/utils/convertToObject';
 const PropertyPage = async ({ params }) => {
   // NOTE: No need for making a fetch request here to our API routes, we can
   // simply make this component a server component and query the DB directly.
-  // Making a fetch request is an unnecessary additional step.
 
-  // NOTE: here we can check if we are runningin in production on vercel and get
-  // the public url at build time for the ShareButtons, or fall back to localhost in development.
+  // NOTE: here we can check if we are running in in production on vercel and get
+  // the public URL at build time for the ShareButtons, or fall back to localhost in development.
   const PUBLIC_DOMAIN = process.env.VERCEL_URL
     ? `https://${process.env.VERCEL_URL}`
     : 'http://localhost:3000';
