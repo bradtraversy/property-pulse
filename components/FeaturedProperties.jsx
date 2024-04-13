@@ -4,8 +4,7 @@ import Property from '@/models/Property';
 
 const FeaturedProperties = async () => {
   // NOTE: here we can use a server component and simply query the database
-  // directly without making a additional request to a API route.
-  // There is no need to make requests to API routes from server components.
+  // directly.
 
   await connectDB();
 
