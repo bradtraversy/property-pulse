@@ -50,7 +50,6 @@ The `_theme_files` folder contains the pure HTML files with Tailwind classes.
 - [Further improvements](#further-improvements)
   - [Using VERCEL_URL for the site url](#using-vercelurl-for-the-site-url)
   - [Catch errors and rejections in an ErrorBoundry](#catch-errors-and-rejections-in-an-errorboundry)
-  - [TODO:](#todo)
   - [License](#license)
   <!--toc:end-->
 
