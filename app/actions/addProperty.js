@@ -87,6 +87,8 @@ async function addProperty(formData) {
   await newProperty.save();
 
   // Revalidate the cache
+  // NOTE: since properties are pretty much on every page, we can simply
+  // revalidate everything that uses our top level layout
   revalidatePath('/', 'layout');
 
   redirect(`/properties/${newProperty._id}`);
