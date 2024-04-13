@@ -12,6 +12,10 @@ async function addProperty(formData) {
 
   const sessionUser = await getSessionUser();
 
+  // NOTE: throwing an Error from our server actions will be caught by our
+  // error.jsx ErrorBoundry component and show the user an Error page with
+  // message of the thrown error.
+
   if (!sessionUser || !sessionUser.userId) {
     throw new Error('User ID is required');
   }

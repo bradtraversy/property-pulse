@@ -15,6 +15,12 @@ async function addMessage(previousState, formData) {
 
   const sessionUser = await getSessionUser();
 
+  // NOTE: Here we send an { error } object back which we can use to then show
+  // the user a toast message.
+  // We don't want to throw here like we did in our property server actions as that would
+  // then be 'caught' by our error.jsx ErrorBoundry component and show the user
+  // our Error page.
+
   if (!sessionUser || !sessionUser.user) {
     return { error: 'You must be logged in to send a message' };
   }
