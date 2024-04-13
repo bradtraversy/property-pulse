@@ -6,6 +6,11 @@ import addMessage from '@/app/actions/addMessage';
 import { useFormStatus, useFormState } from 'react-dom';
 import { useEffect } from 'react';
 
+// NOTE: Using a separate component for our submit button allows us to use the
+// useFormStatus hook to give the user feedback about sending a message, in the
+// button itself.
+// https://react.dev/reference/react-dom/hooks/useFormStatus
+
 function SubmitMessageButton() {
   const status = useFormStatus();
   return (
