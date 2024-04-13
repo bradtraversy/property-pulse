@@ -514,7 +514,7 @@ We only needed these because we were making fetch requests from server component
 
 ## TODO:
 
-- Provide a **error.js** ErrorBoundry pages/component to catch errors
+- Provide a [error.js](https://nextjs.org/docs/app/building-your-application/routing/error-handling) ErrorBoundry pages/component to catch errors.
 
 ---
 
