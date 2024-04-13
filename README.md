@@ -49,6 +49,7 @@ The `_theme_files` folder contains the pure HTML files with Tailwind classes.
   - [Get unread message count with a server action](#get-unread-message-count-with-a-server-action)
 - [Further improvements](#further-improvements)
   - [Using VERCEL_URL for the site url](#using-vercelurl-for-the-site-url)
+  - [Catch errors and rejections in an ErrorBoundry](#catch-errors-and-rejections-in-an-errorboundry)
   - [TODO:](#todo)
   - [License](#license)
   <!--toc:end-->
@@ -512,9 +513,28 @@ We only needed these because we were making fetch requests from server component
 - [env.example](env.example)
 - [next.config.mjs](next.config.mjs)
 
-## TODO:
+## Catch errors and rejections in an ErrorBoundry
 
-- Provide a [error.js](https://nextjs.org/docs/app/building-your-application/routing/error-handling) ErrorBoundry pages/component to catch errors.
+Any time our application experiences an error thrown by us (such as from our server
+actions) or by some other issue (like a database connection timeout from
+Mongoose) then we can **catch** that in an [ ErrorBoundry ](https://nextjs.org/docs/app/building-your-application/routing/error-handling) by creating a top
+level [error.js](app/error.js) client component and show something meaningful to
+the user about what went wrong. If we then don't catch the error lower down in
+our component tree to do something more specific with then this page will
+render and provide a option for the user to try again or safely return to the
+home page.
+
+Test by temporarily throwing an error in any page or any server action, then
+trigger the server action, such as throwing an error in [app/actions/addMessage.js](app/actions/addMessage.js) then try and send a message.
+
+```js
+throw new Error('This is just a test error');
+```
+
+**Changes can be seen in**
+
+- Create file: [error.jsx](app/error.jsx)
+- [config/database.js](config/database.js)
 
 ---
 
