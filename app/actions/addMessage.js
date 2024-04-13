@@ -3,6 +3,7 @@
 import connectDB from '@/config/database';
 import Message from '@/models/Message';
 import { getSessionUser } from '@/utils/getSessionUser';
+import { revalidatePath } from 'next/cache';
 
 // NOTE: here we have previousState as a first argument as in our
 // PropertyContactForm we are using the useFormState hook from React DOM to give
@@ -37,6 +38,9 @@ async function addMessage(previousState, formData) {
   });
 
   await newMessage.save();
+
+  // revalidate cache
+  revalidatePath('/messages', 'page');
 
   return { submitted: true };
 }

@@ -24,6 +24,8 @@ async function deleteMessage(messageId) {
     throw new Error('Unauthorized');
   }
 
+  // revalidate cache
+  revalidatePath('/messages', 'page');
   await message.deleteOne();
 }
 

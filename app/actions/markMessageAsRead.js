@@ -24,6 +24,8 @@ async function markMessageAsRead(messageId) {
   // Update message to read/unread depending on the current status
   message.read = !message.read;
 
+  // revalidate cache
+  revalidatePath('/messages', 'page');
   await message.save();
   return message.read;
 }
