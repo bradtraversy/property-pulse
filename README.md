@@ -166,7 +166,9 @@ status to those using accessibility tools like screen readers.
 For good accessibility in our application, we should ideally set this
 value to state to correctly reflect if the menu is open or not.
 
-Changes can be seen in [components/Navbar.jsx](./components/Navbar.jsx)
+**Changes can be seen in**
+
+- Change file: [components/Navbar.jsx](./components/Navbar.jsx)
 
 ## Corrections to PropertyAddForm
 
@@ -176,10 +178,10 @@ In our **PropertyAddForm** we state that a user can add up to 4 images, however
 we don't have any logic to validate a maximum of 4 images were added, so they
 can in fact add as many images as they like.
 
-Changes can be seen in:
+**Changes can be seen in:**
 
-- [components/PropertyAddForm.jsx](./components/PropertyAddForm.jsx)
-- [models/Property.js](./models/Property.js)
+- Change file: [components/PropertyAddForm.jsx](./components/PropertyAddForm.jsx)
+- Change file: [models/Property.js](./models/Property.js)
 
 ### No need to check for component being mounted
 
@@ -243,7 +245,9 @@ So using the **Poppins** as our **sans** Tailwind font.
 However we also need to import/source that font if we want to use it in the
 project.
 
-Changes can be seen in [globals.css](assets/styles/globals.css)
+**Changes can be seen in**
+
+- Change file: [globals.css](assets/styles/globals.css)
 
 ## Correction: Use Next Link component for application links
 
@@ -302,11 +306,11 @@ fixes and corrections above.
 
 ## Client components that can be moved to server components
 
-- [components/HomeProperties.jsx](components/HomeProperties.jsx)
-- [components/FeaturedProperties.jsx](components/FeaturedProperties.jsx)
-- [app/properties/\[id\]/page.jsx](app/properties/[id]/page.jsx)
-- [app/properties/search-results/page.jsx](app/properties/search-results/page.jsx)
-- [app/properties/saved/page.jsx](app/properties/saved/page.jsx)
+- Change file: [components/HomeProperties.jsx](components/HomeProperties.jsx)
+- Change file: [components/FeaturedProperties.jsx](components/FeaturedProperties.jsx)
+- Change file: [app/properties/\[id\]/page.jsx](app/properties/[id]/page.jsx)
+- Change file: [app/properties/search-results/page.jsx](app/properties/search-results/page.jsx)
+- Change file: [app/properties/saved/page.jsx](app/properties/saved/page.jsx)
 
 The above changes also depend on marking
 [PropertyImages](components/PropertyImages.jsx) and
@@ -346,9 +350,9 @@ previous pages.
 
 **Changes can be seen in**
 
-- [app/properties/page.jsx](app/properties/page.jsx)
-- [components/Properties.jsx](components/Properties.jsx)
-- [components/Pagination.jsx](components/Pagination.jsx)
+- Change file: [app/properties/page.jsx](app/properties/page.jsx)
+- Change file: [components/Properties.jsx](components/Properties.jsx)
+- Change file: [components/Pagination.jsx](components/Pagination.jsx)
 
 With the above changes we can then remove the `GET` route handler function from
 [app/api/properties/route.js](app/api/properties/route.js) as it's no longer
@@ -367,7 +371,7 @@ them. This is implemented in a new component in [components/SubmitButton.jsx](co
 
 **Changes can be seen in**
 
-- [components/PropertyAddForm.jsx](components/PropertyAddForm.jsx)
+- Change file: [components/PropertyAddForm.jsx](components/PropertyAddForm.jsx)
 - Delete file: [app/api/properties/route.js](app/api/properties/route.js)
 - Create file: [app/actions/addProperty.js](app/actions/addProperty.js)
 - Create file: [components/SubmitButton.jsx](components/SubmitButton.jsx)
@@ -389,10 +393,10 @@ to make the edit page only accessible to authenticated users.
 
 **Changes can be seen in**
 
-- [app/properties/\[id\]/edit/page.jsx](app/properties/[id]/edit/page.jsx)
-- [components/PropertyEditForm.jsx](components/PropertyEditForm.jsx)
-- [app/api/properties/\[id\]/route.js](app/api/properties/[id]/route.js)
-- [middleware.js](middleware.js)
+- Change file: [app/properties/\[id\]/edit/page.jsx](app/properties/[id]/edit/page.jsx)
+- Change file: [components/PropertyEditForm.jsx](components/PropertyEditForm.jsx)
+- Change file: [app/api/properties/\[id\]/route.js](app/api/properties/[id]/route.js)
+- Change file: [middleware.js](middleware.js)
 - Create file: [app/actions/updateProperty.js](app/actions/updateProperty.js)
 
 ## Make the profile page a server component
@@ -402,6 +406,11 @@ component and fetch the users properties by directly querying the database.
 However we still need to dynamically update the users properties on the client
 if and when a property is deleted by the user.  
 We can do this by making a new client component [components/ProfileProperties.jsx](components/ProfileProperties.jsx) that receives the properties as a prop sets them in local state.
+
+**Changes can be seen in**
+
+- Change file: [app/profile/page.jsx](app/profile/page.jsx)
+- Create file: [components/ProfileProperties.jsx](components/ProfileProperties.jsx)
 
 ### Deleting a property with a server action
 
@@ -415,7 +424,7 @@ We also no longer need a **DELETE** route handler in our [app/api/properties/\[i
 
 **Changes can be seen in**
 
-- [app/profile/page.jsx](app/profile/page.jsx)
+- Change file: [app/profile/page.jsx](app/profile/page.jsx)
 - Create file: [components/ProfileProperties.jsx](components/ProfileProperties.jsx)
 - Create file: [app/actions/deleteProperty.js](app/actions/deleteProperty.js)
 - Delete file: [app/api/user/\[userId\]/route.js](app/api/user/[userId]/route.js)
@@ -430,7 +439,7 @@ With this in place we can then delete our [app/api/messages/\[id\]/route.js](app
 
 **Changes can be seen in**
 
-- [components/Message.jsx](components/Message.jsx)
+- Change file: [components/Message.jsx](components/Message.jsx)
 - Create file: [app/actions/markMessageAsRead.js](app/actions/markMessageAsRead.js)
 - Create file: [app/actions/deleteMessage.js](app/actions/deleteMessage.js)
 - Delete file: [app/api/messages/\[id\]/route.js](app/api/messages/[id]/route.js)
@@ -445,7 +454,7 @@ With these changes we can then delete the [app/api/messages/route.js](app/api/me
 
 **Changes can be seen in**
 
-- [components/PropertyContactForm.jsx](components/PropertyContactForm.jsx)
+- Change file: [components/PropertyContactForm.jsx](components/PropertyContactForm.jsx)
 - Create file: [app/actions/addMessage.js](app/actions/addMessage.js)
 - Delete file: [app/api/messages/route.js](app/api/messages/route.js)
 
@@ -458,7 +467,7 @@ With this change we can then remove our [app/api/bookmarks/check/route.js](app/a
 
 **Changes can be seen in**
 
-- [components/BookmarkButton.jsx](components/BookmarkButton.jsx)
+- Change file: [components/BookmarkButton.jsx](components/BookmarkButton.jsx)
 - Delete file: [app/api/bookmarks/check/route.js](app/api/bookmarks/check/route.js)
 - Delete file: [app/api/bookmarks/route.js](app/api/bookmarks/route.js)
 - Create file: [app/actions/checkBookmarkStatus.js](app/actions/checkBookmarkStatus.js)
@@ -479,11 +488,11 @@ needs to be a descendent of the **AuthProvider**.
 
 **Changes can be seen in**
 
-- [app/layout.jsx](app/layout.jsx)
-- [components/UnreadMessageCount.jsx](components/UnreadMessageCount.jsx)
-- [components/Navbar.jsx](components/Navbar.jsx) (remove prop form
+- Change file: [app/layout.jsx](app/layout.jsx)
+- Change file: [components/UnreadMessageCount.jsx](components/UnreadMessageCount.jsx)
+- Change file: [components/Navbar.jsx](components/Navbar.jsx) (remove prop form
   UnreadMessageCount component)
-- [context/GlobalContext.js](context/GlobalContext.js)
+- Change file: [context/GlobalContext.js](context/GlobalContext.js)
 - Create file: [app/actions/getUnreadMessageCount.js](app/actions/getUnreadMessageCount.js)
 - Delete file: [app/api/messages/unread-count/route.js](app/api/messages/unread-count/route.js)
 
@@ -508,9 +517,9 @@ We only needed these because we were making fetch requests from server component
 
 **Changes can be seen in**
 
-- [components/ShareButtons.jsx](components/ShareButtons.jsx)
-- [env.example](env.example)
-- [next.config.mjs](next.config.mjs)
+- Change file: [components/ShareButtons.jsx](components/ShareButtons.jsx)
+- Change file: [env.example](env.example)
+- Change file: [next.config.mjs](next.config.mjs)
 
 ## Catch errors and rejections in an ErrorBoundry
 
@@ -533,7 +542,7 @@ throw new Error('This is just a test error');
 **Changes can be seen in**
 
 - Create file: [error.jsx](app/error.jsx)
-- [config/database.js](config/database.js)
+- Change file: [config/database.js](config/database.js)
 
 ---
 
