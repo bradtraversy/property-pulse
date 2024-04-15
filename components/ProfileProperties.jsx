@@ -16,9 +16,7 @@ function ProfileProperties({ properties: initialProperties }) {
 
     if (!confirmed) return;
 
-    const deletePropertyById = deleteProperty.bind(null, propertyId);
-
-    await deletePropertyById();
+    await deleteProperty(propertyId);
 
     toast.success('Property Deleted');
 
