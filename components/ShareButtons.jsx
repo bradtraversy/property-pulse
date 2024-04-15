@@ -11,7 +11,7 @@ import {
 } from 'react-share';
 
 const ShareButtons = ({ property, PUBLIC_DOMAIN }) => {
-  // NOTE: here we recieve a prop from our paretn page component which is
+  // NOTE: here we receive a prop from our paretn page component which is
   // server rendered and knows if we are in deployed to Vercel or developing
   // locally.
 

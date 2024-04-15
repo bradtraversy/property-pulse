@@ -6,7 +6,7 @@ import connectDB from '@/config/database';
 // NOTE: this is a server component so we can use the url search parameters here
 // to query our database directly and then pass the properties to our Properties
 // component. This then means the Properties component can be rendered server
-// side and no longer needs to make a fetch reqeust to an API route handler.
+// side and no longer needs to make a fetch request to an API route handler.
 
 const PropertiesPage = async ({ searchParams: { pageSize = 6, page = 1 } }) => {
   await connectDB();

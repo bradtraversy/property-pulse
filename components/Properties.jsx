@@ -1,7 +1,7 @@
 import PropertyCard from '@/components/PropertyCard';
 import Pagination from '@/components/Pagination';
 
-// NOTE: This has been changed to a server component and now recieves props from
+// NOTE: This has been changed to a server component and now receives props from
 // the page parent so no need to make a fetch request to an API route handler.
 
 const Properties = ({ properties, total, page, pageSize }) => {

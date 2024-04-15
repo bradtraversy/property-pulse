@@ -6,7 +6,7 @@ import SubmitButton from './SubmitButton';
 const PropertyAddForm = () => {
   // NOTE: checking for component is mounted is unnecessary so has been removed.
   // We don't need state here as we are submitting the form with a server
-  // action so we are not doing anthing with the local state.
+  // action so we are not doing anything with the local state.
 
   const handleImageChange = (e) => {
     // NOTE: Code here has changed to limit user to 4 images

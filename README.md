@@ -302,7 +302,8 @@ and mutating or updating data whenever possible in **Server Actions**
 [Source](https://nextjs.org/docs/app/building-your-application/data-fetching/patterns)
 
 This branch is built on top of the **bugfix** branch so includes all the bug
-fixes and corrections above.
+fixes and corrections above. Therefore if you are following the below steps it
+would be advisable to first adopt the bug fixes above.
 
 ## Client components that can be moved to server components
 
