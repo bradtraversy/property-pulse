@@ -13,6 +13,10 @@ export const metadata = {
   keywords: 'rental, find rentals, find properties',
 };
 
+// NOTE: with moving getting the users messages to GlobalProvider then
+// GlobalProvider now needs to be a descendent of AuthProvider to be able to
+// access it's state.
+
 const MainLayout = ({ children }) => {
   return (
     <AuthProvider>

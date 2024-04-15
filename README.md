@@ -408,11 +408,6 @@ However we still need to dynamically update the users properties on the client
 if and when a property is deleted by the user.  
 We can do this by making a new client component [components/ProfileProperties.jsx](components/ProfileProperties.jsx) that receives the properties as a prop sets them in local state.
 
-**Changes can be seen in**
-
-- Change file: [app/profile/page.jsx](app/profile/page.jsx)
-- Create file: [components/ProfileProperties.jsx](components/ProfileProperties.jsx)
-
 ### Deleting a property with a server action
 
 Server actions can be used for more than just form submissions, we can trigger
