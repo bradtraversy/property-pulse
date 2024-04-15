@@ -37,7 +37,15 @@ async function bookmarkProperty(propertyId) {
   }
 
   await user.save();
+
+  // revalidate the cache.
   revalidatePath('/properties/saved', 'page');
+  // NOTE: A nice demonstration of NextJS caching can be done here by first
+  // commenting out the above line, then bookmark or un-bookmark a property for
+  // a user then visit /properties/saved (either via link or going back in the
+  // browser) and you will see the old results until
+  // you refresh the page. If you then add back in the above line and repeat,
+  // you will see the users saved properties are up to date.
 
   return { message, isBookmarked };
 }
