@@ -18,7 +18,7 @@ async function markMessageAsRead(messageId) {
 
   // Verify ownership
   if (message.recipient.toString() !== userId) {
-    return new Response('Unauthorized', { status: 401 });
+    throw new Error('Unauthorized');
   }
 
   // Update message to read/unread depending on the current status
