@@ -26,7 +26,7 @@ const BookmarkButton = ({ property }) => {
       if (res.isBookmarked) setIsBookmarked(res.isBookmarked);
       setLoading(false);
     });
-  }, [property._id, userId, checkBookmarkStatus]);
+  }, [property._id, userId]);
 
   const handleClick = async () => {
     if (!userId) {

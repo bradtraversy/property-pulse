@@ -49,7 +49,7 @@ const PropertyMap = ({ property }) => {
     };
 
     fetchCoords();
-  }, []);
+  }, [property]);
 
   if (loading) return <Spinner loading={loading} />;
 
