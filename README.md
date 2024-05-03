@@ -540,6 +540,21 @@ throw new Error('This is just a test error');
 - Create file: [error.jsx](app/error.jsx)
 - Change file: [config/database.js](config/database.js)
 
+## Remove try catch block from getSessionUser
+
+When `next build` runs it attempts to statically generate pages, but some of our
+pages require dynamic data such as any page that uses an auth session.  
+By catching an error in our [getSessionUser](utils/getSessionUser.js)
+function **we** are catching an error in our code, and so Next doesn't catch
+the error, so it doens't know it can't statically generate those pages and our
+build will fail.  
+So we need to remove the try catch block from [getSessionUser](utils/getSessionUser.js)
+so the error is caught at build time by Next.
+
+**Changes can be seen in**
+
+[getSessionUser](utils/getSessionUser.js)
+
 ---
 
 ## License
