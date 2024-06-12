@@ -72,7 +72,7 @@ async function addProperty(formData) {
 
     // Make request to upload to Cloudinary
     const result = await cloudinary.uploader.upload(
-      `data:image/png;base64,${imageBase64}`,
+      `data:${imageFile.type};base64,${imageBase64}`,
       {
         folder: 'propertypulse',
       }
