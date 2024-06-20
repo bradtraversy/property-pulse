@@ -30,7 +30,7 @@ const SearchResultsPage = () => {
           setProperties([]);
         }
       } catch (error) {
-        console.log(eror);
+        console.log(error);
       } finally {
         setLoading(false);
       }
