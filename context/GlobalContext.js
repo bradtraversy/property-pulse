@@ -23,7 +23,7 @@ export function GlobalProvider({ children }) {
         if (res.count) setUnreadCount(res.count);
       });
     }
-  }, [getUndreadMessageCount, session]);
+  }, [session]);
 
   return (
     <GlobalContext.Provider
