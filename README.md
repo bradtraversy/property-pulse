@@ -4,6 +4,8 @@
 
 This is the main project from my [Next 14 From Scratch Course](https://www.traversymedia.com/nextjs-from-scratch)
 
+This is the old version of the app that uses API routes for properties, messaging, etc. The current/latest version of the courses uses server actions. The updated code can be found [here](https://github.com/bradtraversy/property-pulse-nextjs) as well as in the [refactor branch](https://github.com/bradtraversy/property-pulse/tree/refactor).
+
 ## Important notes
 
 If you are following along with the course and running into issues, then please
