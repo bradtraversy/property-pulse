@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';  //code need only be included here
+
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import AuthProvider from '@/components/AuthProvider';
